@@ -2,7 +2,7 @@
   <div>
     <div class="row m-0">
       <template v-for="(s, index) in steps">
-        <div v-if="index > 0" class="connector my-auto" :key="index"></div>
+        <div v-if="index > 0" class="connector my-auto" :key="s.title"></div>
         <div
           class="col step-item"
           :class="index == step ? 'bg-selected' : 'bg-normal'"
