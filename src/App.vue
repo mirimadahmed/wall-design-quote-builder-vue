@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="row text-center m-auto p-0">
     <div class="col-5 p-5">
-      <design class="my-2 border" :step="step" />
+      <design class="my-4" :steps="steps" :step="step" />
       <selection class="my-2" :step="step" :steps="steps" />
     </div>
-    <div class="col-7 border">
+    <div class="col-7">
       <info class="my-2 px-3" />
       <steps class="my-2 px-3" v-model="step" :steps="steps" />
       <items
