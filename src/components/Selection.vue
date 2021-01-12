@@ -11,7 +11,7 @@
             item.selection ? 'selection-selected' : 'selection-unselected'
           "
           ><i class="fas fa-check mr-1"></i
-          >{{ item.selection ? item.selection : "None Selected" }}</span
+          >{{ item.selection ? item.selection.text : "None Selected" }}</span
         >
       </div>
     </div>

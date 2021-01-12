@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <div class="row">
+  <div class="main-selection-wrapper">
+    <div class="row py-5">
       <div
         class="col-3"
         v-for="(item, index) in steps[step].items"
         :key="index"
+        @click="selectItem(item)"
       >
-        <img :src="item.image" alt="" class="w-100 h-100" />
-        <p>{{ item.text }}</p>
+        <img :src="item.image" :alt="item.text" class="w-150 h-150" />
+        <p class="item-title">{{ item.text }}</p>
       </div>
     </div>
   </div>
@@ -25,8 +26,20 @@ export default {
       required: true,
     },
   },
+  methods: {
+    selectItem(item) {
+      this.$emit('select-item', item);
+    }
+  }
 };
 </script>
 
-<style>
+<style scoped>
+.main-selection-wrapper {
+  border-top: 2px solid #01679a;
+  border-bottom: 2px solid #01679a;
+}
+.item-title {
+  color: #01679a;
+}
 </style>
