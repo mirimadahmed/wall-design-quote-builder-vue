@@ -6,7 +6,7 @@
     </div>
     <div class="col-7 border">
       <info class="my-2 border" />
-      <steps class="my-2" v-model="step" :steps="steps" />
+      <steps class="my-2 px-3" v-model="step" :steps="steps" />
       <items
         class="my-2"
         :step="step"
