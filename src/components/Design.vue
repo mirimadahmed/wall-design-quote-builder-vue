@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p>Step: {{ step }}</p>
+      <p>Step: {{ step + 1 }}</p>
   </div>
 </template>
 

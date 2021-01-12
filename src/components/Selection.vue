@@ -1,17 +1,11 @@
 <template>
   <div class="text-left">
-    <p class="border-bottom">Selected Layers</p>
+    <p class="title">Selected Layers</p>
     <ul>
-      <li class="border-bottom">1. Wall Base <span><i class="bi bi-check"></i>Wood</span></li>
-      <li class="border-bottom">2. Wall Base Wood</li>
-      <li class="border-bottom">3. Wall Base Wood</li>
-      <li class="border-bottom">4. Wall Base Wood</li>
-      <li class="border-bottom">5. Wall Base Wood</li>
-      <li class="border-bottom">6. Wall Base Wood</li>
-      <li class="border-bottom">7. Wall Base Wood</li>
-      <li class="border-bottom">8. Wall Base Wood</li>
-      <li class="border-bottom">9. Wall Base Wood</li>
-      <li class="border-bottom">10. Wall Base Wood</li>
+      <li><span class="number">1.</span>Wall Base <span class="selection selection-selected"><i class="fas fa-check"></i>Wood</span></li>
+      <li><span class="number">1.</span>Wall Base <span class="selection selection-selected"><i class="bi bi-check"></i>Wood</span></li>
+      <li><span class="number">1.</span>Wall Base <span class="selection selection-unselected"><i class="bi bi-check"></i>Wood</span></li>
+      <li><span class="number">1.</span>Wall Base <span class="selection selection-unselected"><i class="bi bi-check"></i>Wood</span></li>
     </ul>
   </div>
 </template>
@@ -27,5 +21,39 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.title {
+  text-transform: initial;
+  color: blue;
+  font-weight: bolder;
+  font-style: italic;
+  border-bottom: 2px solid blue;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  border-bottom: 1px solid blue;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.number {
+  background: blue;
+  color: white;
+  margin-right: 20px;
+  padding: 5px;
+}
+.selection {
+  text-transform: initial;
+  font-weight: 300;
+}
+.selection-selected {
+  color: blue;
+}
+
+.selection-unselected {
+  color: grey;
+}
 </style>

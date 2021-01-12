@@ -49,7 +49,7 @@ export default {
   watch: {
     step(val) {
       if (val !== this.value) {
-        this.$emit("value", this.step);
+        this.$emit("input", this.step);
       }
     },
   },

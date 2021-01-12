@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="row px-5 mx-2">
-    <div class="col-md-4 border mx-2">
+    <div class="col-3 border mx-2">
       <design class="my-2 border" :step="step" />
-      <selection class="my-2 border" :step="step" />
+      <selection class="my-2" :step="step" />
     </div>
-    <div class="col-md-6 border mx-2">
+    <div class="col-7 border mx-2">
       <info class="my-2 border" />
       <steps class="my-2" v-bind:value="step" :steps="steps" />
       <items class="my-2 border" :step="step" :steps="steps" />
