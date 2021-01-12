@@ -1,56 +1,64 @@
 <template>
-  <div class="text-left">
-    <p class="title">Selected Layers</p>
-    <ul>
-      <li><span class="number">1.</span>Wall Base <span class="selection selection-selected"><i class="fas fa-check"></i>Wood</span></li>
-      <li><span class="number">1.</span>Wall Base <span class="selection selection-selected"><i class="bi bi-check"></i>Wood</span></li>
-      <li><span class="number">1.</span>Wall Base <span class="selection selection-unselected"><i class="bi bi-check"></i>Wood</span></li>
-      <li><span class="number">1.</span>Wall Base <span class="selection selection-unselected"><i class="bi bi-check"></i>Wood</span></li>
-    </ul>
+  <div class="">
+    <p class="row title">Selected Layers</p>
+    <div class="row-item row" v-for="(item, index) in steps" :key="index">
+      <div class="col-1 text-center p-0 number">{{ index + 1 }}.</div>
+      <div class="col text-left col-item">
+        {{ item.title }}
+        <span
+          class="selection ml-1"
+          :class="
+            item.selection ? 'selection-selected' : 'selection-unselected'
+          "
+          ><i class="fas fa-check mr-1"></i
+          >{{ item.selection ? item.selection : "None Selected" }}</span
+        >
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    props: {
-        step: {
-            type: Number,
-            required: true
-        }
-    }
+  props: {
+    step: {
+      type: Number,
+      required: true,
+    },
+    steps: {
+      type: Array,
+      required: true,
+    },
+  },
 };
 </script>
 
 <style scoped>
 .title {
   text-transform: initial;
-  color: blue;
-  font-weight: bolder;
+  color: #01679a;
   font-style: italic;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid #01679a;
+  font-size: 1.5rem;
 }
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  border-bottom: 1px solid blue;
+.row-item {
+  border-bottom: 1px solid #01679a;
   margin-bottom: 10px;
+}
+.col-item {
   text-transform: uppercase;
-  font-weight: 400;
+  font-size: 1rem;
 }
 .number {
-  background: blue;
+  background: #01679a;
   color: white;
-  margin-right: 20px;
-  padding: 5px;
 }
 .selection {
   text-transform: initial;
   font-weight: 300;
 }
 .selection-selected {
-  color: blue;
+  color: #01679a;
 }
 
 .selection-unselected {
