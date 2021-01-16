@@ -29,7 +29,7 @@
         <button :disabled="step == 0" @click="step--">BACK</button>
       </div>
       <div class="col-2 pr-0">
-        <button class="reset-button">RESET</button>
+        <button class="reset-button" @click="resetSelection">RESET</button>
       </div>
     </div>
   </div>
@@ -59,6 +59,11 @@ export default {
       }
     },
   },
+  methods: {
+    resetSelection() {
+      this.$emit("reset-selection");
+    }
+  }
 };
 </script>
 

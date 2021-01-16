@@ -6,7 +6,7 @@
     </div>
     <div class="col-7">
       <info class="my-2 px-3" />
-      <steps class="my-2 px-3" v-model="step" :steps="steps" />
+      <steps class="my-2 px-3" v-model="step" :steps="steps" @reset-selection="resetSelection" />
       <items
         class="my-2"
         :step="step"
@@ -323,6 +323,9 @@ export default {
     selectItem(item) {
       this.steps[this.step].selection = item;
     },
+    resetSelection() {
+      this.steps.forEach(item => item.selection = null);
+    }
   },
 };
 </script>
