@@ -1,24 +1,35 @@
 <template>
-  <div id="app" class="row text-center m-auto p-0">
-    <div class="col-5 p-5">
-      <design class="my-4" :steps="steps" :step="step" />
-      <selection class="my-2" :step="step" :steps="steps" />
+  <div id="app" class="text-center container">
+    <div class="row">
+      <div class="col-5 px-5 py-0">
+        <transition-group name="list" tag="div">
+          <div v-for="item in selectedItems" class="design-element" :key="item.text">
+            <img class="w-100" v-if="!item.none" :src="item.image" :alt="item.image" />
+          </div>
+        </transition-group>
+      </div>
+      <div class="col-7">
+        <info class="mt-2 px-3" />
+        <steps
+          class="mt-2 px-3"
+          v-model="step"
+          :steps="steps"
+          @reset-selection="resetSelection"
+        />
+      </div>
     </div>
-    <div class="col-7">
-      <info class="my-2 px-3" />
-      <steps class="my-2 px-3" v-model="step" :steps="steps" @reset-selection="resetSelection" />
-      <items
-        class="my-2"
-        :step="step"
-        :steps="steps"
-        @select-item="selectItem"
-      />
+    <div class="row mt-5">
+      <div class="col-5 px-5 py-0">
+        <selection :step="step" :steps="steps" />
+      </div>
+      <div class="col-7 py-4">
+        <items class="my-2 h-100" :step="step" :steps="steps" @select-item="selectItem" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Design from "./components/Design.vue";
 import Selection from "./components/Selection.vue";
 import Info from "./components/Info.vue";
 import Steps from "./components/Steps.vue";
@@ -30,312 +41,329 @@ export default {
     Info,
     Items,
     Selection,
-    Design,
   },
   data() {
     return {
       step: 0,
       steps: [
         {
-          helper: "something for help",
+          helper:
+            "What type of studs are you using? Wood or Steel. If using Concrete CMU or Brick, Select None",
           title: "Wall Base",
           link: "",
           selection: null,
           items: [
             {
-              text: "ABC Product 1.1",
-              image: "https://via.placeholder.com/150",
+              text: "Steel Stud",
+              image: "http://facadesxi.com/walls/SystemLayers_0009s_0000_Steel.png",
             },
             {
-              text: "ABC Product 1.2",
-              image: "https://via.placeholder.com/150",
+              text: "Concrete Stud",
+              image: "http://facadesxi.com/walls/SystemLayers_0009s_0001_Concrete.png",
             },
             {
-              text: "ABC Product 1.3",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 1.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 1.5",
-              image: "https://via.placeholder.com/150",
+              text: "Wood Stud",
+              image: "http://facadesxi.com/walls/SystemLayers_0009s_0002_Wood.png",
             },
           ],
         },
         {
-          helper: "",
+          helper:
+            "Subtrate Selection. If Unknown, Select ASTM C1177 Fiber Glass Faced Gypsum Sheating",
           title: "Substrate",
           link: "",
           selection: null,
           items: [
             {
-              text: "ABC Product 2.1",
-              image: "https://via.placeholder.com/150",
+              text: "Brick",
+              image: "http://facadesxi.com/walls/SystemLayers_0008s_0000_brick.png",
             },
             {
-              text: "ABC Product 2.2",
-              image: "https://via.placeholder.com/150",
+              text: "Concrete",
+              image: "http://facadesxi.com/walls/SystemLayers_0008s_0001_Concrete.png",
             },
             {
-              text: "ABC Product 2.3",
-              image: "https://via.placeholder.com/150",
+              text: "CMU",
+              image: "http://facadesxi.com/walls/SystemLayers_0008s_0002_CMU-2-copy.png",
             },
             {
-              text: "ABC Product 2.4",
-              image: "https://via.placeholder.com/150",
+              text: "ASTM C1177 Glass Mat Gypsum Sheating",
+              image: "http://facadesxi.com/walls/SystemLayers_0008s_0003_Glass-Mat.png",
             },
             {
-              text: "ABC Product 2.5",
-              image: "https://via.placeholder.com/150",
+              text: "ASTM C79/C1396 Gypsum Sheating",
+              image: "http://facadesxi.com/walls/SystemLayers_0008s_0004_Gypsum.png",
+            },
+            {
+              text: "Exterior Plywood",
+              image: "http://facadesxi.com/walls/SystemLayers_0008s_0005_Plywood.png",
+            },
+            {
+              text: "Exposure I OSB",
+              image: "http://facadesxi.com/walls/SystemLayers_0008s_0006_OSB.png",
             },
           ],
         },
         {
-          helper: "",
+          helper:
+            "Water Resistant Barrier, Liquid or Shet Membranes. FacadesXi WaterShield allows for single source materials and Longer and better system warranties.",
           title: "Water Resistive Barrier",
           link: "",
           selection: null,
           items: [
             {
-              text: "ABC Product 3.1",
-              image: "https://via.placeholder.com/150",
+              text: "Water Shield with Slip Sheet",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0007s_0000_Slip-sheet-and-drainage.png",
             },
             {
-              text: "ABC Product 3.2",
-              image: "https://via.placeholder.com/150",
+              text: "Water Shield without Slip Sheet",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0007s_0001_Pink-barrier-coating.png",
             },
             {
               text: "ABC Product 3.3",
-              image: "https://via.placeholder.com/150",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0007s_0002_barrier-coating.png",
             },
             {
-              text: "ABC Product 3.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 3.5",
-              image: "https://via.placeholder.com/150",
+              text: "Water Barrier by Others",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0007s_0003_barrier-coating.png",
             },
           ],
         },
         {
-          helper: "",
+          helper: "Do you want an extra means of drainage behind your stucco assembly?",
           title: "Drainage",
           link: "",
           selection: null,
+          noneAllowed: true,
           items: [
             {
-              text: "ABC Product 4.1",
-              image: "https://via.placeholder.com/150",
+              text: "None No Drainage",
+              image: "http://facadesxi.com/walls/None-4.png",
+              none: true,
             },
             {
-              text: "ABC Product 4.2",
-              image: "https://via.placeholder.com/150",
+              text: "Insulation Board with Drainage Grooves",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0006s_0000_Drainage-Grooves.png",
             },
             {
-              text: "ABC Product 4.3",
-              image: "https://via.placeholder.com/150",
+              text: "Vertical Ribbons of Adhesive",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0006s_0001_Layer-12-copy-11.png",
             },
             {
-              text: "ABC Product 4.4",
-              image: "https://via.placeholder.com/150",
+              text: "Tyvek Stuccowrap",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0006s_0002_Tyvek-Stuccowrap.png",
             },
             {
-              text: "ABC Product 4.5",
-              image: "https://via.placeholder.com/150",
+              text: "Drainage Mat",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0006s_0003_Drainage-Mat-.png",
             },
           ],
         },
         {
-          helper: "",
+          helper: "Continous Insulation Boards allow for Needed R Value",
           title: "Continous Insulation",
           link: "",
           selection: null,
+          noneAllowed: true,
           items: [
             {
-              text: "ABC Product 5.1",
-              image: "https://via.placeholder.com/150",
+              text: "None Insulation",
+              image: "http://facadesxi.com/walls/None-5.png",
+              none: true,
             },
             {
-              text: "ABC Product 5.2",
-              image: "https://via.placeholder.com/150",
+              text: "EPS",
+              image: "http://facadesxi.com/walls/SystemLayers_0005s_0000_EPS.png",
             },
             {
-              text: "ABC Product 5.3",
-              image: "https://via.placeholder.com/150",
+              text: "XPS",
+              image: "http://facadesxi.com/walls/SystemLayers_0005s_0001_XPS-copy.png",
             },
             {
-              text: "ABC Product 5.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 5.5",
-              image: "https://via.placeholder.com/150",
+              text: "Polysio",
+              image: "http://facadesxi.com/walls/SystemLayers_0005s_0002_Polyiso.png",
             },
           ],
         },
         {
-          helper: "",
+          helper: "Choose Lath Type, If Unknown, Select Standard Metal Lath",
           title: "Code Compilant Lath",
           link: "",
           selection: null,
           items: [
             {
-              text: "ABC Product 6.1",
-              image: "https://via.placeholder.com/150",
+              text: "Woven Wire",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0004s_0000_AdobeStock_96714578-copy-4.png",
             },
             {
-              text: "ABC Product 6.2",
-              image: "https://via.placeholder.com/150",
+              text: "Plastic Lath",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0004s_0001_Plastic-Lath.png",
             },
             {
-              text: "ABC Product 6.3",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 6.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 6.5",
-              image: "https://via.placeholder.com/150",
+              text: "Metal Lath",
+              image: "http://facadesxi.com/walls/SystemLayers_0004s_0002_Metal-Lath.png",
             },
           ],
         },
         {
-          helper: "",
+          helper: "Sucoo, One coat or Three coats?",
           title: "Stucco",
           link: "",
           selection: null,
           items: [
             {
-              text: "ABC Product 7.1",
-              image: "https://via.placeholder.com/150",
+              text: "One Coat (3/8'')",
+              image: "http://facadesxi.com/walls/SystemLayers_0003s_0000_Stucco.png",
             },
             {
-              text: "ABC Product 7.2",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 7.3",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 7.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 7.5",
-              image: "https://via.placeholder.com/150",
+              text: "Three Coat (7/8'')",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0003s_0001_Three-Stucco.png",
             },
           ],
         },
         {
-          helper: "",
+          helper:
+            "Do you want a crack Resistant Layer: FractureStop Layer: FS 10 has a more polymer modified base coat and higher weight reinforcing mesh and comes with a longer warranty than FS5 options.",
           title: "Fracturestop",
           link: "",
           selection: null,
+          noneAllowed: true,
           items: [
             {
-              text: "ABC Product 8.1",
-              image: "https://via.placeholder.com/150",
+              text: "None",
+              image: "http://facadesxi.com/walls/None-8.png",
+              none: true,
             },
             {
-              text: "ABC Product 8.2",
-              image: "https://via.placeholder.com/150",
+              text: "FS5",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0002s_0000_Base-Coat-and-mesh.png",
             },
             {
-              text: "ABC Product 8.3",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 8.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 8.5",
-              image: "https://via.placeholder.com/150",
+              text: "FS10",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0002s_0001_Base-Coat-and-mesh.png",
             },
           ],
         },
         {
-          helper: "",
+          helper:
+            "Select a Primer for decreased efflorescence and highest finish coat aesthetic performance and increased warranty - Do not select Primer if using a cement finish",
           title: "Primer",
           link: "",
           selection: null,
+          noneAllowed: true,
           items: [
             {
-              text: "ABC Product 9.1",
-              image: "https://via.placeholder.com/150",
+              text: "None",
+              image: "http://facadesxi.com/walls/None-9.png",
+              none: true,
             },
             {
-              text: "ABC Product 9.2",
-              image: "https://via.placeholder.com/150",
+              text: "Xi-Alkali Resistant Primer",
+              image: "http://facadesxi.com/walls/SystemLayers_0001s_0000_Primer.png",
             },
             {
-              text: "ABC Product 9.3",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 9.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 9.5",
-              image: "https://via.placeholder.com/150",
+              text: "Xi-Alkali Resistant Primer",
+              image: "http://facadesxi.com/walls/SystemLayers_0001s_0001_Primer.png",
             },
           ],
         },
         {
-          helper: "",
+          helper: "Choose Finish coat for your system?",
           title: "Finish Coat",
           link: "",
           selection: null,
           items: [
             {
-              text: "ABC Product 10.1",
-              image: "https://via.placeholder.com/150",
+              text: "Hacienda Smooth Cement Finish",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0000s_0000_Hacienda-Smooth.png",
             },
             {
-              text: "ABC Product 10.2",
-              image: "https://via.placeholder.com/150",
+              text: "Hacienda Sand Cement Finish",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0000s_0001_Hacienda-Sand.png",
             },
             {
-              text: "ABC Product 10.3",
-              image: "https://via.placeholder.com/150",
+              text: "Xi-Elastomeric Finish Coat",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0000s_0002_Finish-coat-copy.png",
             },
             {
-              text: "ABC Product 10.4",
-              image: "https://via.placeholder.com/150",
-            },
-            {
-              text: "ABC Product 10.5",
-              image: "https://via.placeholder.com/150",
+              text: "Xi-Textured Acrylic Finish Coat",
+              image: "http://facadesxi.com/walls/SystemLayers_0000s_0003_Finish-coat.png",
             },
           ],
         },
       ],
+      selectedItems: [],
     };
+  },
+  created() {
+    this.setSteel();
   },
   methods: {
     selectItem(item) {
+      if (this.selectedItems[this.step]) {
+        this.selectedItems.splice(this.step, 1, item);
+      } else {
+        this.selectedItems.push(item);
+      }
       this.steps[this.step].selection = item;
     },
     resetSelection() {
-      this.steps.forEach(item => item.selection = null);
-    }
+      this.step = 0;
+      this.selectedItems = [];
+      this.steps.forEach((step) => (step.selection = null));
+      this.setSteel();
+    },
+    setSteel() {
+      const steelItem = this.steps[0].items[0];
+      this.selectedItems.push(steelItem);
+      this.steps[0].selection = steelItem;
+    },
   },
 };
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.design-element {
+  position: absolute;
+  top: 0;
+  left: 5%;
+}
+.list-enter-active {
+  transition: all 1s;
+}
+.list-leave-active {
+  transition: all 0.5s;
+}
+.list-enter /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(150px);
 }
 </style>

@@ -47,11 +47,14 @@ export default {
 }
 .col-item {
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 .number {
   background: #01679a;
+  font-size: 0.8rem;
   color: white;
+  height: 20px;
+  max-width: 20px;
 }
 .selection {
   text-transform: initial;

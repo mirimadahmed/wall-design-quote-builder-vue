@@ -7,15 +7,15 @@
           class="col step-item"
           :class="index == step ? 'bg-selected' : 'bg-normal'"
           :key="index"
-        >
-          {{ index + 1 }}
-        </div>
+        >{{ index + 1 }}</div>
       </template>
     </div>
     <div class="text-left my-4 px-3 py-2 info-box">
       <i class="fa fa-info-circle mr-1" aria-hidden="true"></i>
       {{ steps[step].title }} Selection. {{ steps[step].helper }}
-      <a :href="steps[step].link">Link here </a>
+      <a
+        :href="steps[step].link"
+      >Link here</a>
     </div>
     <div class="row m-0 py-2">
       <div class="col-6 row m-0 info-box p-0">
@@ -23,7 +23,7 @@
         <div class="col-10 py-1">{{ steps[step].title }}</div>
       </div>
       <div class="col-2 pr-0">
-        <button :disabled="step == 9" @click="step++">NEXT</button>
+        <button :disabled="step == 9 || steps[step].selection === null" @click="step++">NEXT</button>
       </div>
       <div class="col-2 pr-0">
         <button :disabled="step == 0" @click="step--">BACK</button>
@@ -58,12 +58,17 @@ export default {
         this.$emit("input", this.step);
       }
     },
+    value(val) {
+      if (val !== this.step) {
+        this.step = val;
+      }
+    },
   },
   methods: {
     resetSelection() {
       this.$emit("reset-selection");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -82,13 +87,13 @@ export default {
 button {
   min-width: 100%;
   min-height: 100%;
-  background: #01679a;
+  background: #00679b;
   color: white;
   border: none;
 }
 .reset-button,
 button:disabled {
-  background: rgb(114, 73, 11);
+  background: #282b2d;
 }
 .bg-selected {
   background: #01679a;
