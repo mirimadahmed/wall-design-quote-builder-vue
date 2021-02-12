@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="text-center container">
+    <Calculator />
     <div class="row">
       <div class="col-5 px-5 py-0">
         <transition-group name="list" tag="div">
@@ -14,6 +15,7 @@
           class="mt-2 px-3"
           v-model="step"
           :steps="steps"
+          :shifters="shifters"
           @reset-selection="resetSelection"
         />
       </div>
@@ -31,6 +33,7 @@
 
 <script>
 import Selection from "./components/Selection.vue";
+import Calculator from "./components/Calculator.vue";
 import Info from "./components/Info.vue";
 import Steps from "./components/Steps.vue";
 import Items from "./components/Items.vue";
@@ -41,14 +44,16 @@ export default {
     Info,
     Items,
     Selection,
+    Calculator,
   },
   data() {
     return {
       step: 0,
+      shifters: [2, 3, 4],
       steps: [
         {
           helper:
-            "What type of studs are you using? Wood or Steel. If using Concrete CMU or Brick, Select None",
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>What type of Studs are you using? <span>Steel or Wood</span>',
           title: "Wall Base",
           link: "",
           selection: null,
@@ -58,22 +63,9 @@ export default {
               image: "http://facadesxi.com/walls/SystemLayers_0009s_0000_Steel.png",
             },
             {
-              text: "Concrete Stud",
-              image: "http://facadesxi.com/walls/SystemLayers_0009s_0001_Concrete.png",
-            },
-            {
               text: "Wood Stud",
               image: "http://facadesxi.com/walls/SystemLayers_0009s_0002_Wood.png",
             },
-          ],
-        },
-        {
-          helper:
-            "Subtrate Selection. If Unknown, Select ASTM C1177 Fiber Glass Faced Gypsum Sheating",
-          title: "Substrate",
-          link: "",
-          selection: null,
-          items: [
             {
               text: "Brick",
               image: "http://facadesxi.com/walls/SystemLayers_0008s_0000_brick.png",
@@ -86,6 +78,15 @@ export default {
               text: "CMU",
               image: "http://facadesxi.com/walls/SystemLayers_0008s_0002_CMU-2-copy.png",
             },
+          ],
+        },
+        {
+          helper:
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Substrate Selection. <span>If Unknown, Select ASTM C1177 FiberGlass Faced Gypsum Sheathing</span>',
+          title: "Substrate",
+          link: "",
+          selection: null,
+          items: [
             {
               text: "ASTM C1177 Glass Mat Gypsum Sheating",
               image: "http://facadesxi.com/walls/SystemLayers_0008s_0003_Glass-Mat.png",
@@ -106,7 +107,7 @@ export default {
         },
         {
           helper:
-            "Water Resistant Barrier, Liquid or Shet Membranes. FacadesXi WaterShield allows for single source materials and Longer and better system warranties.",
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FacadesXi WaterShield allows for single source materials and Longer and better system warranties.<br>A slip sheet is required when being installed directly under Lath and Stucco.',
           title: "Water Resistive Barrier",
           link: "",
           selection: null,
@@ -122,11 +123,6 @@ export default {
                 "http://facadesxi.com/walls/SystemLayers_0007s_0001_Pink-barrier-coating.png",
             },
             {
-              text: "ABC Product 3.3",
-              image:
-                "http://facadesxi.com/walls/SystemLayers_0007s_0002_barrier-coating.png",
-            },
-            {
               text: "Water Barrier by Others",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0007s_0003_barrier-coating.png",
@@ -134,14 +130,14 @@ export default {
           ],
         },
         {
-          helper: "Do you want an extra means of drainage behind your stucco assembly?",
+          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Do you want an extra means of drainage behind your stucco assembly?',
           title: "Drainage",
           link: "",
           selection: null,
           noneAllowed: true,
           items: [
             {
-              text: "None No Drainage",
+              text: "No Drainage",
               image: "http://facadesxi.com/walls/None-4.png",
               none: true,
             },
@@ -168,14 +164,14 @@ export default {
           ],
         },
         {
-          helper: "Continous Insulation Boards allow for Needed R Value",
+          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Continuous Insulation Boards allow for Needed R Value',
           title: "Continous Insulation",
           link: "",
           selection: null,
           noneAllowed: true,
           items: [
             {
-              text: "None Insulation",
+              text: "No Insulation",
               image: "http://facadesxi.com/walls/None-5.png",
               none: true,
             },
@@ -194,10 +190,11 @@ export default {
           ],
         },
         {
-          helper: "Choose Lath Type, If Unknown, Select Standard Metal Lath",
+          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Lath Type, <span>If Unknown, Select Standard Metal Lath</span>',
           title: "Code Compilant Lath",
           link: "",
           selection: null,
+          error: "A slip sheet is required when being installed directly under Lath and Stucco.",
           items: [
             {
               text: "Woven Wire",
@@ -216,9 +213,10 @@ export default {
           ],
         },
         {
-          helper: "Sucoo, One coat or Three coats?",
+          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Stucco, One coat or Three coats? Xi-Admix will increase the strength of the your stucco base coat and decrease efflorescence.',
           title: "Stucco",
           link: "",
+          error: "Woven Wire is only allowed with One Coat Stucco.",
           selection: null,
           items: [
             {
@@ -230,11 +228,20 @@ export default {
               image:
                 "http://facadesxi.com/walls/SystemLayers_0003s_0001_Three-Stucco.png",
             },
+            {
+              text: "Xi-Admix One Coat (3/8'')",
+              image: "http://facadesxi.com/walls/SystemLayers_0003s_0000_Stucco.png",
+            },
+            {
+              text: "Xi-Admix Three Coat (7/8'')",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0003s_0001_Three-Stucco.png",
+            },
           ],
         },
         {
           helper:
-            "Do you want a crack Resistant Layer: FractureStop Layer: FS 10 has a more polymer modified base coat and higher weight reinforcing mesh and comes with a longer warranty than FS5 options.",
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>Do you want a crack Resistant Layer: </span>FractureStop Layer: FS 10 has a more polymer modified base coat and higher weight reinforcing mesh and comes with a longer warranty than FS5 options.',
           title: "Fracturestop",
           link: "",
           selection: null,
@@ -253,13 +260,13 @@ export default {
             {
               text: "FS10",
               image:
-                "http://facadesxi.com/walls/SystemLayers_0002s_0001_Base-Coat-and-mesh.png",
+                "http://facadesxi.com/walls/SystemLayers_0002s_0000_Base-Coat-and-mesh.png",
             },
           ],
         },
         {
           helper:
-            "Select a Primer for decreased efflorescence and highest finish coat aesthetic performance and increased warranty - Do not select Primer if using a cement finish",
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Select a Primer for decreased efflorescence and highest finish coat aesthetic performance and increased warranty - <span>Do not select Primer if using a cement finish</span>',
           title: "Primer",
           link: "",
           selection: null,
@@ -281,7 +288,7 @@ export default {
           ],
         },
         {
-          helper: "Choose Finish coat for your system?",
+          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Finish coat for your system?',
           title: "Finish Coat",
           link: "",
           selection: null,
@@ -315,13 +322,34 @@ export default {
     this.setSteel();
   },
   methods: {
-    selectItem(item) {
+    selectItem(selection) {
+      const item = selection.item;
+      const index = selection.index;
       if (this.selectedItems[this.step]) {
         this.selectedItems.splice(this.step, 1, item);
       } else {
         this.selectedItems.push(item);
       }
       this.steps[this.step].selection = item;
+
+      this.steps.forEach((item, index) => {
+        if(index > this.step) {
+          item.selection = null
+        }
+      })
+
+      this.selectedItems.splice(this.step + 1)
+
+      if(this.step === 0) {
+        if(this.shifters.includes(index)) {
+          for (let index = 1; index < 6; index++) {
+            this.selectedItems.push({
+              text: "None selection: " + index,
+              none: true
+            })
+          }
+        }
+      }
     },
     resetSelection() {
       this.step = 0;
@@ -365,5 +393,11 @@ export default {
 .list-leave-to {
   opacity: 0;
   transform: translateX(150px);
+}
+.info-box span {
+  color: #01679a
+}
+.fa {
+  color: #01679a;
 }
 </style>
