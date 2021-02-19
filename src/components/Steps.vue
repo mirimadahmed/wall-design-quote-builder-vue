@@ -13,8 +13,8 @@
         </div>
       </template>
     </div>
-    <div style="min-height: 100px; display: flex" class="my-2 align-items-center">
-      <div style="flex: 1" class="text-left px-3 py-2 info-box" v-html="getHelper()"></div>
+    <div style="min-height: 75px; display: flex" class="my-4 align-items-center info-box">
+      <div style="flex: 1" class="text-left px-3" v-html="getHelper()"></div>
     </div>
     <div class="row m-0 py-2">
       <div class="col-6 row m-0 info-box p-0">
@@ -22,12 +22,12 @@
         <div class="col-10 py-1">{{ steps[step].title }}</div>
       </div>
       <div class="col-2 pr-0">
+        <button :disabled="step == 0" @click="back">BACK</button>
+      </div>
+      <div class="col-2 pr-0">
         <button :disabled="step == 9 || steps[step].selection === null" @click="next">
           NEXT
         </button>
-      </div>
-      <div class="col-2 pr-0">
-        <button :disabled="step == 0" @click="back">BACK</button>
       </div>
       <div class="col-2 pr-0">
         <button class="reset-button" @click="resetSelection">RESET</button>
@@ -71,14 +71,14 @@ export default {
   },
   methods: {
     getHelper() {
-      if(this.step === 5) {
+      if (this.step === 5) {
         const selection3 = this.steps[2].selection;
         const selection4 = this.steps[3].selection;
         const selection5 = this.steps[4].selection;
         if (selection3 && selection3.text === "Water Shield without Slip Sheet") {
           if (selection4 && selection4.text === "No Drainage") {
             if (selection5 && selection5.text === "No Insulation") {
-              return this.steps[this.step].helper + ". " +this.steps[this.step].error;
+              return this.steps[this.step].helper + ". " + this.steps[this.step].error;
             }
           }
         }
@@ -86,7 +86,7 @@ export default {
       if (this.step === 6) {
         const selection = this.steps[5].selection;
         if (selection && selection.text === "Woven Wire") {
-          return this.steps[this.step].helper + ". " +this.steps[this.step].error;
+          return this.steps[this.step].helper + ". " + this.steps[this.step].error;
         }
       }
       return this.steps[this.step].helper;
@@ -196,6 +196,7 @@ export default {
   background: #01679a;
   color: white;
   font-weight: bold;
+  font-family: "Poppins";
 }
 button {
   min-width: 100%;
@@ -217,6 +218,7 @@ button:disabled {
   color: #01679a;
 }
 .step-item {
+  font-family: "Poppins";
   border: 1px solid #01679a;
   padding: 0px;
   font-size: 1rem;

@@ -54,6 +54,7 @@ export default {
   font-size: 0.8rem;
   color: white;
   height: 20px;
+  font-family: "Poppins";
   max-width: 20px;
 }
 .selection {

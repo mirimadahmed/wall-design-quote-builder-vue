@@ -28,6 +28,56 @@
         <items class="my-2 h-100" :step="step" :steps="steps" @select-item="selectItem" />
       </div>
     </div>
+    <div v-if="shownDisclaimer">
+      <transition name="modal">
+        <div class="modal-mask">
+          <div class="modal-wrapper">
+            <div
+              class="modal show"
+              id="myModal"
+              role="dialog"
+              style="display: block"
+              data-show="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Disclaimer</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      @click="shownDisclaimer = false"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      This interactive System is a guide to help designers and owners
+                      choose the components and assembly for their project. The designer
+                      should ensure that the chosen components and assembly meet the
+                      building code requirements for the project type, such as drainage,
+                      fire resistance rating and non-combustible construction testing and
+                      compliance.
+                    </p>
+                    <p>
+                      The materials must be installed per the IBC, IRC and FacadesXi
+                      installation instructions and specifications. Materials listed that
+                      are not manufactured or distributed by FACADESXi are included for
+                      the clarity of the assembly, are not necessarily installed by the
+                      plastering contractor and must be installed per the
+                      manufacturer/industry and building code standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -48,6 +98,7 @@ export default {
   },
   data() {
     return {
+      shownDisclaimer: true,
       step: 0,
       shifters: [2, 3, 4],
       steps: [
@@ -107,7 +158,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FacadesXi WaterShield allows for single source materials and Longer and better system warranties.<br>A slip sheet is required when being installed directly under Lath and Stucco.',
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FacadesXi WaterShield allows for single source materials and Longer and better system warranties.<br><i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>A slip sheet is required when being installed directly under Lath and Stucco.</span>',
           title: "Water Resistive Barrier",
           link: "",
           selection: null,
@@ -130,7 +181,8 @@ export default {
           ],
         },
         {
-          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Do you want an extra means of drainage behind your stucco assembly?',
+          helper:
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Do you want an extra means of drainage behind your stucco assembly?',
           title: "Drainage",
           link: "",
           selection: null,
@@ -164,8 +216,9 @@ export default {
           ],
         },
         {
-          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Continuous Insulation Boards allow for Needed R Value',
-          title: "Continous Insulation",
+          helper:
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Continuous Insulation Boards allow for Needed R Value',
+          title: "Continuous Insulation",
           link: "",
           selection: null,
           noneAllowed: true,
@@ -190,11 +243,13 @@ export default {
           ],
         },
         {
-          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Lath Type, <span>If Unknown, Select Standard Metal Lath</span>',
+          helper:
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Lath Type, <span>If Unknown, Select Standard Metal Lath</span>',
           title: "Code Compilant Lath",
           link: "",
           selection: null,
-          error: "A slip sheet is required when being installed directly under Lath and Stucco.",
+          error:
+            "A slip sheet is required when being installed directly under Lath and Stucco.",
           items: [
             {
               text: "Woven Wire",
@@ -213,7 +268,8 @@ export default {
           ],
         },
         {
-          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Stucco, One coat or Three coats? Xi-Admix will increase the strength of the your stucco base coat and decrease efflorescence.',
+          helper:
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Stucco, One coat or Three coats? Xi-Admix will increase the strength of the your stucco base coat and decrease efflorescence.',
           title: "Stucco",
           link: "",
           error: "Woven Wire is only allowed with One Coat Stucco.",
@@ -288,7 +344,8 @@ export default {
           ],
         },
         {
-          helper: '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Finish coat for your system?',
+          helper:
+            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Finish coat for your system?',
           title: "Finish Coat",
           link: "",
           selection: null,
@@ -333,20 +390,20 @@ export default {
       this.steps[this.step].selection = item;
 
       this.steps.forEach((item, index) => {
-        if(index > this.step) {
-          item.selection = null
+        if (index > this.step) {
+          item.selection = null;
         }
-      })
+      });
 
-      this.selectedItems.splice(this.step + 1)
+      this.selectedItems.splice(this.step + 1);
 
-      if(this.step === 0) {
-        if(this.shifters.includes(index)) {
+      if (this.step === 0) {
+        if (this.shifters.includes(index)) {
           for (let index = 1; index < 6; index++) {
             this.selectedItems.push({
               text: "None selection: " + index,
-              none: true
-            })
+              none: true,
+            });
           }
         }
       }
@@ -395,9 +452,26 @@ export default {
   transform: translateX(150px);
 }
 .info-box span {
-  color: #01679a
+  color: #01679a;
 }
 .fa {
   color: #01679a;
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  transition: opacity 0.3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
 }
 </style>

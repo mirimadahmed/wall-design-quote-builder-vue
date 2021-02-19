@@ -1,6 +1,6 @@
 <template>
   <div class="main-selection-wrapper h-100 row">
-    <div class="row col-12 p-0 m-0">
+    <div class="row col-12 p-0 m-0 pt-4">
       <div
         class="col-3"
         v-for="(item, index) in steps[step].items"

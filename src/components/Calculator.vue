@@ -107,7 +107,10 @@ export default {
     },
     equal() {
       if (this.operatorClicked == false) {
-        this.answer = eval(this.logList + this.current);
+        let answer = eval(this.logList + this.current);
+        this.clear();
+        this.answer = answer;
+        this.append(answer);
       } else {
         this.answer = "WHAT?!!";
       }
