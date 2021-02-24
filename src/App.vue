@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="text-center container">
-    <Calculator />
-    <div class="row">
+    <Calculator class="d-none d-sm-flex" />
+    <div class="row d-none d-sm-flex">
       <div class="col-5 px-5 py-0">
         <transition-group name="list" tag="div">
           <div v-for="item in selectedItems" class="design-element" :key="item.text">
@@ -20,12 +20,52 @@
         />
       </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-5 d-none d-sm-flex">
       <div class="col-5 px-5 py-0">
         <selection :step="step" :steps="steps" />
       </div>
       <div class="col-7 py-4">
-        <items class="my-2 h-100" :step="step" :steps="steps" @select-item="selectItem" />
+        <items
+          class="my-my-2 h-100"
+          :step="step"
+          :steps="steps"
+          @select-item="selectItem"
+        />
+      </div>
+    </div>
+    <!-- 
+      Mobile only
+     -->
+    <div class="row d-sm-none d-md-flex">
+      <div class="col-12 p-0">
+        <info class="mt-2 px-3" />
+        <steps
+          class="mt-2 px-3"
+          v-model="step"
+          :steps="steps"
+          :shifters="shifters"
+          @reset-selection="resetSelection"
+        />
+      </div>
+      <div class="col-12 px-5 py-0">
+        <transition-group name="list" tag="div">
+          <div v-for="item in selectedItems" class="design-element" :key="item.text">
+            <img style="height: 18rem !important;" v-if="!item.none" :src="item.image" :alt="item.image" />
+          </div>
+        </transition-group>
+      </div>
+    </div>
+    <div class="row mt-5 d-sm-none d-md-flex" style="margin-top: 16rem !important;">
+      <div class="col-12 py-4">
+        <items
+          class="my-my-2 h-100 border-none"
+          :step="step"
+          :steps="steps"
+          @select-item="selectItem"
+        />
+      </div>
+      <div class="col-12 px-5 py-0">
+        <selection :step="step" :steps="steps" />
       </div>
     </div>
     <div v-if="shownDisclaimer">
@@ -473,5 +513,16 @@ export default {
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
+}
+.my-my-2 {
+  margin-top: 0.7rem !important;
+  margin-bottom: 0.7rem !important;
+}
+
+@media screen and (max-width: 575px) {
+  .design-element {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 </style>

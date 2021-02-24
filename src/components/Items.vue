@@ -1,8 +1,8 @@
 <template>
   <div class="main-selection-wrapper h-100 row">
-    <div class="row col-12 p-0 m-0 pt-4">
+    <div class="row col-12 p-0 m-0 item-wrapper">
       <div
-        class="col-3"
+        class="col-3 item-selector"
         v-for="(item, index) in steps[step].items"
         :key="item.image + index"
       >
@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 mt-auto p-0">
+    <div class="col-12 mt-auto p-0 bottom-cloud">
       <img src="http://facadesxi.com/walls/right-botom-cloud.png" alt="" class="w-100" />
     </div>
   </div>
@@ -114,6 +114,7 @@ export default {
 .item-title {
   font-size: 0.8rem;
   color: #01679a;
+  white-space: initial !important;
 }
 .download-box {
   border: 1px solid #01679a;
@@ -130,5 +131,24 @@ button {
   pointer-events: none;
   color: rgb(197, 197, 197);
   filter: grayscale(1);
+}
+@media screen and (max-width: 575px) {
+  .item-wrapper {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .item-selector {
+    display: inline-block;
+    max-width: 33.33% !important;
+  }
+  .main-selection-wrapper {
+    border-bottom: none;
+  }
+  .bottom-cloud {
+    display: none;
+    opacity: 0;
+    transform: scale(0);
+  }
 }
 </style>

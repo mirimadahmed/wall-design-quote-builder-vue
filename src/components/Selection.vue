@@ -56,6 +56,7 @@ export default {
   height: 20px;
   font-family: "Poppins";
   max-width: 20px;
+  margin-bottom: -1px;
 }
 .selection {
   text-transform: initial;

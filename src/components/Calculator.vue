@@ -55,6 +55,10 @@ export default {
   methods: {
     toggle() {
       this.shown = !this.shown;
+      if(this.shown) {
+        this.clear()
+        this.answer = 0
+      }
     },
     append(number) {
       if (this.operatorClicked) {
@@ -88,7 +92,6 @@ export default {
       }
     },
     dot() {
-      this.animateNumber("dot");
       if (this.current.indexOf(".") === -1) {
         this.append(".");
       }
@@ -134,7 +137,6 @@ export default {
   z-index: 100;
   top: 20%;
   right: 0;
-  width: 80px;
   transition: all 0.5s ease-in-out;
 }
 

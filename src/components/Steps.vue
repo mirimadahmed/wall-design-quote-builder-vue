@@ -19,7 +19,7 @@
     <div class="row m-0 py-2">
       <div class="col-6 row m-0 info-box p-0">
         <div class="col-2 number py-1">{{ step + 1 }}</div>
-        <div class="col-10 py-1">{{ steps[step].title }}</div>
+        <div class="col py-1">{{ steps[step].title }}</div>
       </div>
       <div class="col-2 pr-0">
         <button :disabled="step == 0" @click="back">BACK</button>
@@ -249,5 +249,24 @@ button:disabled {
   display: block;
   height: 1px;
   background-color: #01679a;
+}
+
+@media screen and (max-width: 575px) {
+  .col-2 {
+    padding-left: 5px !important;
+  }
+  .col-2 > button {
+    font-size: 8px;
+    line-height: 8px;
+  }
+  .info-box {
+    font-size: 8px;
+  }
+  .number::after {
+    border-bottom: solid 22px #01679a;
+  }
+  .step-item {
+    font-size: 10px;
+  }
 }
 </style>
