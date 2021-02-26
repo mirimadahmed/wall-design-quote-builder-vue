@@ -36,7 +36,7 @@
     <!-- 
       Mobile only
      -->
-    <div class="row d-sm-none d-md-flex">
+    <div class="row d-sm-none d-flex">
       <div class="col-12 p-0">
         <info class="mt-2 px-3" />
         <steps
@@ -55,7 +55,7 @@
         </transition-group>
       </div>
     </div>
-    <div class="row mt-5 d-sm-none d-md-flex" style="margin-top: 16rem !important;">
+    <div class="row mt-5 d-sm-none d-flex" style="margin-top: 16rem !important;">
       <div class="col-12 py-4">
         <items
           class="my-my-2 h-100 border-none"
