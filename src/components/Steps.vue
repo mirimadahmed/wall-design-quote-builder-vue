@@ -13,7 +13,7 @@
         </div>
       </template>
     </div>
-    <div style="min-height: 75px; display: flex" class="my-4 align-items-center info-box">
+    <div class="my-4 info-box selected-info-box">
       <div style="flex: 1" class="text-left px-3" v-html="getHelper()"></div>
     </div>
     <div class="row m-0 py-2">
@@ -188,6 +188,11 @@ export default {
 </script>
 
 <style scoped>
+.selected-info-box {
+  display: flex;
+  min-height: 75px;
+  align-items: center;
+}
 .info-box {
   border: 1px solid #01679a;
   font-size: 0.8rem;
@@ -252,6 +257,11 @@ button:disabled {
 }
 
 @media screen and (max-width: 575px) {
+  .selected-info-box {
+    min-height: 50px;
+    margin-top: 20px !important;
+    margin-bottom: 15px !important;
+  }
   .col-2 {
     padding-left: 5px !important;
   }
@@ -260,10 +270,11 @@ button:disabled {
     line-height: 8px;
   }
   .info-box {
-    font-size: 8px;
+    font-size: 7px;
   }
   .number::after {
-    border-bottom: solid 22px #01679a;
+    border-bottom: solid 20px #01679a;
+    display: none;
   }
   .step-item {
     font-size: 10px;

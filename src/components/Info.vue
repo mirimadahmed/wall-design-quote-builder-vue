@@ -10,9 +10,9 @@
       </p>
     </div>
     <div class="col-12 row my-4 p-0 mx-0 selection text-center">
-      <div class="col-4 p-0 bg-selected py-1"><i class="fa fa-check-circle-o mr-1 bg-selected" aria-hidden="true"></i>Stucco</div>
-      <div class="col-4 p-0 bg-unselected py-1 border">EIFS</div>
-      <div class="col-4 p-0 bg-unselected py-1 border">Concrete</div>
+      <div class="col-4 p-0 bg-selected py-1 select-type"><i class="fa fa-check-circle-o mr-1 bg-selected" aria-hidden="true"></i>Stucco</div>
+      <div class="col-4 p-0 bg-unselected py-1 select-type">EIFS</div>
+      <div class="col-4 p-0 bg-unselected py-1 select-type">Concrete</div>
     </div>
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {};
 </script>
 
 <style scoped>
+.select-type {
+  border: 1px solid white;
+}
 .selection {
     font-size: 1.2rem;
 }
@@ -35,13 +38,15 @@ export default {};
 }
 @media screen and (max-width: 575px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
   }
   p {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
   }
   div {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 </style>

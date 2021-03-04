@@ -24,7 +24,7 @@
       <div class="col-5 px-5 py-0">
         <selection :step="step" :steps="steps" />
       </div>
-      <div class="col-7 py-4">
+      <div class="col-7 items-wrapper">
         <items
           class="my-my-2 h-100"
           :step="step"
@@ -64,7 +64,7 @@
           @select-item="selectItem"
         />
       </div>
-      <div class="col-12 px-5 py-0">
+      <div class="col-12 px-4 py-0">
         <selection :step="step" :steps="steps" />
       </div>
     </div>
@@ -464,6 +464,9 @@ export default {
 </script>
 
 <style>
+.modal-mask {
+  background-color: rgb(255, 255, 255, 80%) !important
+}
 #app {
   font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -518,11 +521,35 @@ export default {
   margin-top: 0.7rem !important;
   margin-bottom: 0.7rem !important;
 }
+.items-wrapper {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.3rem !important;
+}
 
 @media screen and (max-width: 575px) {
   .design-element {
     left: 50%;
     transform: translate(-50%, 0);
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #01679a; 
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #01679a; 
   }
 }
 </style>

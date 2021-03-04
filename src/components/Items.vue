@@ -1,6 +1,6 @@
 <template>
   <div class="main-selection-wrapper h-100 row">
-    <div class="row col-12 p-0 m-0 item-wrapper">
+    <div class="row col-12 m-0 item-wrapper" :class="step > 4 ? 'p-0' : 'pt-2'">
       <div
         class="col-3 item-selector"
         v-for="(item, index) in steps[step].items"
@@ -41,7 +41,11 @@
       </div>
     </div>
     <div class="col-12 mt-auto p-0 bottom-cloud">
-      <img src="http://facadesxi.com/walls/right-botom-cloud.png" alt="" class="w-100" />
+      <img
+        src="http://facadesxi.com/walls/right-botom-cloud.png"
+        alt=""
+        class="w-100 img-cloud"
+      />
     </div>
   </div>
 </template>
@@ -106,6 +110,11 @@ export default {
 </script>
 
 <style scoped>
+.img-cloud {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 .main-selection-wrapper {
   border-top: 2px solid #01679a;
   border-bottom: 2px solid #01679a;
@@ -141,6 +150,10 @@ button {
   .item-selector {
     display: inline-block;
     max-width: 33.33% !important;
+    vertical-align: top;
+  }
+  .item-selector p {
+    font-size: 0.6rem;
   }
   .main-selection-wrapper {
     border-bottom: none;

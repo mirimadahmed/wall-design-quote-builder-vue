@@ -7,9 +7,7 @@
         {{ item.title }}
         <span
           class="selection ml-1"
-          :class="
-            item.selection ? 'selection-selected' : 'selection-unselected'
-          "
+          :class="item.selection ? 'selection-selected' : 'selection-unselected'"
           ><i class="fas fa-check mr-1"></i
           >{{ item.selection ? item.selection.text : "None Selected" }}</span
         >
@@ -68,5 +66,12 @@ export default {
 
 .selection-unselected {
   color: grey;
+}
+
+@media screen and (max-width: 575px) {
+  .col-item {
+    font-size: 0.7rem;
+    padding-left: 8px !important;
+  }
 }
 </style>
