@@ -13,8 +13,8 @@
     <transition name="slide">
       <div class="slidein" v-if="shown">
         <div class="calculator">
-          <div class="answer">{{ answer }}</div>
           <div class="display">{{ logList + current }}</div>
+          <div v-resize-text class="answer">{{ answer }}</div>
           <div @click="clear" id="clear" class="calc-btn operator">C</div>
           <div @click="sign" id="sign" class="calc-btn operator">+/-</div>
           <div @click="percent" id="percent" class="calc-btn operator">%</div>

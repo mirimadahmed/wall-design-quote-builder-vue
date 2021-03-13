@@ -17,9 +17,7 @@
           class="item-title pointer-clicker"
           :class="getClasses(index)"
           @click="selectItem(item, index)"
-        >
-          {{ item.text }}
-        </p>
+        >{{ item.text }}</p>
       </div>
       <div class="col-12 m-0 p-4" v-if="step === 9 && this.steps[step].selection">
         <div class="col-12 text-center pb-4">
@@ -34,24 +32,46 @@
         </div>
         <div class="col-12 text-left download-box p-3 display-5 mb-4">
           Download the documentation of your custom wall system
-          <button class="mt-2 py-1 px-2">
+          <button
+            class="mt-2 py-1 px-2"
+            @click="generateReport"
+          >
             <i class="fa fa-download mr-2" aria-hidden="true"></i> Download Documentation
           </button>
+          <vue-html2pdf
+            :show-layout="false"
+            :float-layout="true"
+            :enable-download="true"
+            :preview-modal="false"
+            filename="Facades XI Documentation"
+            :pdf-quality="2"
+            :manual-pagination="true"
+            pdf-format="legal"
+            pdf-orientation="portrait"
+            pdf-content-width="100%;"
+            ref="html2Pdf"
+          >
+            <section slot="pdf-content">
+              <PDF :steps="steps" />
+            </section>
+          </vue-html2pdf>
         </div>
       </div>
     </div>
     <div class="col-12 mt-auto p-0 bottom-cloud">
-      <img
-        src="http://facadesxi.com/walls/right-botom-cloud.png"
-        alt=""
-        class="w-100 img-cloud"
-      />
+      <img src="http://facadesxi.com/walls/right-botom-cloud.png" alt class="w-100 img-cloud" />
     </div>
   </div>
 </template>
 
 <script>
+import PDF from "./PDF";
+import VueHtml2pdf from "vue-html2pdf";
 export default {
+  components: {
+    PDF,
+    VueHtml2pdf,
+  },
   props: {
     step: {
       type: Number,
@@ -63,6 +83,9 @@ export default {
     },
   },
   methods: {
+    generateReport() {
+      this.$refs.html2Pdf.generatePdf();
+    },
     selectItem(item, index) {
       this.$emit("select-item", {
         item,
@@ -83,7 +106,10 @@ export default {
         const selection3 = this.steps[2].selection;
         const selection4 = this.steps[3].selection;
         const selection5 = this.steps[4].selection;
-        if (selection3 && selection3.text === "Water Shield without Slip Sheet") {
+        if (
+          selection3 &&
+          selection3.text === "Water Shield without Slip Sheet"
+        ) {
           if (selection4 && selection4.text === "No Drainage") {
             if (selection5 && selection5.text === "No Insulation") {
               return ["item-disabled"];

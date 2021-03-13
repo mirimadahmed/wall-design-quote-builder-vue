@@ -190,8 +190,9 @@ export default {
 <style scoped>
 .selected-info-box {
   display: flex;
-  min-height: 75px;
-  align-items: center;
+  min-height: 50px;
+  align-items: flex-start;
+  padding: 5px;
 }
 .info-box {
   border: 1px solid #01679a;
@@ -233,9 +234,9 @@ button:disabled {
 }
 .step-item-disabled {
   pointer-events: none;
-  background: #94a0a7;
-  border: 1px solid #94a0a7;
-  color: white;
+  background: lightgray;
+  border: 1px solid lightgray;
+  color: grey;
 }
 .number::after {
   content: "";
@@ -258,7 +259,7 @@ button:disabled {
 
 @media screen and (max-width: 575px) {
   .selected-info-box {
-    min-height: 50px;
+    min-height: 30px;
     margin-top: 20px !important;
     margin-bottom: 15px !important;
   }

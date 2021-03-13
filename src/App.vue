@@ -25,17 +25,12 @@
         <selection :step="step" :steps="steps" />
       </div>
       <div class="col-7 items-wrapper">
-        <items
-          class="my-my-2 h-100"
-          :step="step"
-          :steps="steps"
-          @select-item="selectItem"
-        />
+        <items class="my-my-2 h-100" :step="step" :steps="steps" @select-item="selectItem" />
       </div>
     </div>
     <!-- 
       Mobile only
-     -->
+    -->
     <div class="row d-sm-none d-flex">
       <div class="col-12 p-0">
         <info class="mt-2 px-3" />
@@ -50,7 +45,12 @@
       <div class="col-12 px-5 py-0">
         <transition-group name="list" tag="div">
           <div v-for="item in selectedItems" class="design-element" :key="item.text">
-            <img style="height: 18rem !important;" v-if="!item.none" :src="item.image" :alt="item.image" />
+            <img
+              style="height: 18rem !important;"
+              v-if="!item.none"
+              :src="item.image"
+              :alt="item.image"
+            />
           </div>
         </transition-group>
       </div>
@@ -68,7 +68,8 @@
         <selection :step="step" :steps="steps" />
       </div>
     </div>
-    <div v-if="shownDisclaimer">
+
+    <!-- <div v-if="shownDisclaimer">
       <transition name="modal">
         <div class="modal-mask">
           <div class="modal-wrapper">
@@ -117,7 +118,7 @@
           </div>
         </div>
       </transition>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -151,23 +152,28 @@ export default {
           items: [
             {
               text: "Steel Stud",
-              image: "http://facadesxi.com/walls/SystemLayers_0009s_0000_Steel.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0009s_0000_Steel.png",
             },
             {
               text: "Wood Stud",
-              image: "http://facadesxi.com/walls/SystemLayers_0009s_0002_Wood.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0009s_0002_Wood.png",
             },
             {
               text: "Brick",
-              image: "http://facadesxi.com/walls/SystemLayers_0008s_0000_brick.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0008s_0000_brick.png",
             },
             {
               text: "Concrete",
-              image: "http://facadesxi.com/walls/SystemLayers_0008s_0001_Concrete.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0008s_0001_Concrete.png",
             },
             {
               text: "CMU",
-              image: "http://facadesxi.com/walls/SystemLayers_0008s_0002_CMU-2-copy.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0008s_0002_CMU-2-copy.png",
             },
           ],
         },
@@ -180,19 +186,23 @@ export default {
           items: [
             {
               text: "ASTM C1177 Glass Mat Gypsum Sheating",
-              image: "http://facadesxi.com/walls/SystemLayers_0008s_0003_Glass-Mat.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0008s_0003_Glass-Mat.png",
             },
             {
               text: "ASTM C79/C1396 Gypsum Sheating",
-              image: "http://facadesxi.com/walls/SystemLayers_0008s_0004_Gypsum.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0008s_0004_Gypsum.png",
             },
             {
               text: "Exterior Plywood",
-              image: "http://facadesxi.com/walls/SystemLayers_0008s_0005_Plywood.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0008s_0005_Plywood.png",
             },
             {
               text: "Exposure I OSB",
-              image: "http://facadesxi.com/walls/SystemLayers_0008s_0006_OSB.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0008s_0006_OSB.png",
             },
           ],
         },
@@ -270,15 +280,18 @@ export default {
             },
             {
               text: "EPS",
-              image: "http://facadesxi.com/walls/SystemLayers_0005s_0000_EPS.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0005s_0000_EPS.png",
             },
             {
               text: "XPS",
-              image: "http://facadesxi.com/walls/SystemLayers_0005s_0001_XPS-copy.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0005s_0001_XPS-copy.png",
             },
             {
               text: "Polysio",
-              image: "http://facadesxi.com/walls/SystemLayers_0005s_0002_Polyiso.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0005s_0002_Polyiso.png",
             },
           ],
         },
@@ -303,7 +316,8 @@ export default {
             },
             {
               text: "Metal Lath",
-              image: "http://facadesxi.com/walls/SystemLayers_0004s_0002_Metal-Lath.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0004s_0002_Metal-Lath.png",
             },
           ],
         },
@@ -317,7 +331,8 @@ export default {
           items: [
             {
               text: "One Coat (3/8'')",
-              image: "http://facadesxi.com/walls/SystemLayers_0003s_0000_Stucco.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0003s_0000_Stucco.png",
             },
             {
               text: "Three Coat (7/8'')",
@@ -326,7 +341,8 @@ export default {
             },
             {
               text: "Xi-Admix One Coat (3/8'')",
-              image: "http://facadesxi.com/walls/SystemLayers_0003s_0000_Stucco.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0003s_0000_Stucco.png",
             },
             {
               text: "Xi-Admix Three Coat (7/8'')",
@@ -375,11 +391,13 @@ export default {
             },
             {
               text: "Xi-Alkali Resistant Primer",
-              image: "http://facadesxi.com/walls/SystemLayers_0001s_0000_Primer.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0001s_0000_Primer.png",
             },
             {
               text: "Xi-Alkali Resistant Primer",
-              image: "http://facadesxi.com/walls/SystemLayers_0001s_0001_Primer.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0001s_0001_Primer.png",
             },
           ],
         },
@@ -407,7 +425,8 @@ export default {
             },
             {
               text: "Xi-Textured Acrylic Finish Coat",
-              image: "http://facadesxi.com/walls/SystemLayers_0000s_0003_Finish-coat.png",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0000s_0003_Finish-coat.png",
             },
           ],
         },
@@ -465,7 +484,7 @@ export default {
 
 <style>
 .modal-mask {
-  background-color: rgb(255, 255, 255, 80%) !important
+  background-color: rgb(255, 255, 255, 80%) !important;
 }
 #app {
   font-family: "Raleway", sans-serif;
@@ -538,18 +557,18 @@ export default {
 
   /* Track */
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px grey;
   }
-  
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #01679a; 
+    background: #01679a;
     border-radius: 10px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #01679a; 
+    background: #01679a;
   }
 }
 </style>
