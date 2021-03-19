@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100">
+  <div class="w-100" id="printMe">
     <div class="row m-0 p-4">
       <div class="col-5 align-self-center m-0 p-0">
         <img src="https://facadesxi.com/wp-content/uploads/2020/10/logo.png" class="w-100" />
@@ -15,21 +15,27 @@
       </div>
     </div>
     <div class="row m-0 p-0 mt-4">
-      <div class="col-12 m-0 px-0 text-light header">
-        <img
-          src="https://facadesxi.com/wp-content/uploads/2021/01/interactive-banner.jpg?id=915"
-          class="w-100"
-          alt
-        />
+      <div class="col-12 m-0 px-0 text-center">
+        <h1 class="font-weight-bold">INTERACTIVE WALL SYSTEMS</h1>
+        <h4>STUCCO SYSTEM</h4>
       </div>
     </div>
     <div class="row m-0 my-4 p-4">
-      <div class="col-6 wrapper p-0 m-0">
+      <div class="col-6 wrapper row p-0 m-0">
         <div class="col w-100 h-100">
           <div v-for="step in steps" :key="step.title">
-            <div v-if="step.selection">
-              <img :src="step.selection.image" class="selection-image">
-            </div>
+            <img
+              v-if="step.selection"
+              :src="step.selection.image"
+              class="selection-image"
+              style="margin: auto;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    width: 100%;"
+            />
           </div>
         </div>
       </div>
@@ -37,23 +43,17 @@
         <div class="row p-2 align-items-center" v-for="(step, index) in steps" :key="step.title">
           <div class="col-3 text-left">
             <p class="heading">Layer</p>
-            <p class="text">{{ index + 1}}.</p>
+            <h5 class="font-weight-bold">{{ index + 1}}.</h5>
           </div>
-          <div class="col-7 text-left">
+          <div class="col text-left">
             <p class="heading">{{ step.title }}</p>
-            <p class="text" v-if="step.selection">{{ step.selection.text}}</p>
-          </div>
-          <div class="col-2 text-right" v-if="step.selection">
-            <img :src="step.selection.image" class="w-100" alt />
+            <h5 class="font-weight-bold" v-if="step.selection">{{ step.selection.text}}</h5>
           </div>
         </div>
       </div>
     </div>
-    <div class="row footer p-4 m-0">
-      <div class="col-4 align-self-center">
-        <img src="https://facadesxi.com/wp-content/uploads/2020/10/footer-logo.png" alt />
-      </div>
-      <div class="col-8 text-left font-weight-bold">
+    <div class="row footer p-5 m-0" style="background: black; color: white; position: absolute; bottom: 0; left:0;">
+      <div class="col text-center font-weight-bold">
         <p class="mb-3">Disclaimer</p>
         <p class="mb-3">
           This interactive System is a guide to help designers and owners
@@ -83,6 +83,13 @@ export default {
       type: Array,
       required: true,
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.$htmlToPaper("printMe", null, () => {
+        this.$emit("printed");
+      });
+    }, 5000);
   },
 };
 </script>

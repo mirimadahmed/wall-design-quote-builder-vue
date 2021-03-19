@@ -1,0 +1,42 @@
+
+.wrapper {
+  border: 1px solid black;
+}
+.wrapper-2 {
+  border-left: none !important;
+}
+.header {
+  font-size: 2rem;
+  font-weight: 800;
+}
+.header::after {
+  content: "INTERACTIVE WALL SYSTEMS";
+  margin: auto;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+.footer {
+  background: black;
+  color: white;
+}
+p {
+  margin-bottom: 0;
+}
+.heading {
+  font-size: 0.5rem;
+  font-weight: bold;
+}
+.text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.selection-image {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}

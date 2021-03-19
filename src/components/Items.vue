@@ -38,40 +38,17 @@
           >
             <i class="fa fa-download mr-2" aria-hidden="true"></i> Download Documentation
           </button>
-          <vue-html2pdf
-            :show-layout="false"
-            :float-layout="true"
-            :enable-download="true"
-            :preview-modal="false"
-            filename="Facades XI Documentation"
-            :pdf-quality="2"
-            :manual-pagination="true"
-            pdf-format="legal"
-            pdf-orientation="portrait"
-            pdf-content-width="100%;"
-            ref="html2Pdf"
-          >
-            <section slot="pdf-content">
-              <PDF :steps="steps" />
-            </section>
-          </vue-html2pdf>
         </div>
       </div>
     </div>
-    <div class="col-12 mt-auto p-0 bottom-cloud">
+    <div class="col-12 mt-4 p-0 bottom-cloud">
       <img src="http://facadesxi.com/walls/right-botom-cloud.png" alt class="w-100 img-cloud" />
     </div>
   </div>
 </template>
 
 <script>
-import PDF from "./PDF";
-import VueHtml2pdf from "vue-html2pdf";
 export default {
-  components: {
-    PDF,
-    VueHtml2pdf,
-  },
   props: {
     step: {
       type: Number,
@@ -84,7 +61,7 @@ export default {
   },
   methods: {
     generateReport() {
-      this.$refs.html2Pdf.generatePdf();
+      this.$emit('print')
     },
     selectItem(item, index) {
       this.$emit("select-item", {
@@ -126,6 +103,12 @@ export default {
       if (this.step === 9 && (index === 0 || index === 1)) {
         const selection = this.steps[8].selection;
         if (selection && selection.text.includes("Primer")) {
+          return ["item-disabled"];
+        }
+      }
+      if (this.step === 9 && (index === 4 || index === 5)) {
+        const selection = this.steps[7].selection;
+        if (selection && !selection.text.includes("FS5")) {
           return ["item-disabled"];
         }
       }

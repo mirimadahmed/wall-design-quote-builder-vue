@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="text-center container">
-    <Calculator class="d-none d-sm-flex" />
-    <div class="row d-none d-sm-flex">
+    <Calculator class="d-none d-sm-flex" v-if="!print" />
+    <div class="row d-none d-sm-flex" v-if="!print">
       <div class="col-5 px-5 py-0">
         <transition-group name="list" tag="div">
           <div v-for="item in selectedItems" class="design-element" :key="item.text">
@@ -20,18 +20,18 @@
         />
       </div>
     </div>
-    <div class="row mt-5 d-none d-sm-flex">
+    <div class="row mt-5 d-none d-sm-flex" v-if="!print">
       <div class="col-5 px-5 py-0">
         <selection :step="step" :steps="steps" />
       </div>
       <div class="col-7 items-wrapper">
-        <items class="my-my-2 h-100" :step="step" :steps="steps" @select-item="selectItem" />
+        <items class="my-my-2 h-100" :step="step" :steps="steps" @select-item="selectItem" @print="print = true;" />
       </div>
     </div>
     <!-- 
       Mobile only
     -->
-    <div class="row d-sm-none d-flex">
+    <div class="row d-sm-none d-flex" v-if="!print">
       <div class="col-12 p-0">
         <info class="mt-2 px-3" />
         <steps
@@ -55,19 +55,21 @@
         </transition-group>
       </div>
     </div>
-    <div class="row mt-5 d-sm-none d-flex" style="margin-top: 16rem !important;">
+    <div class="row mt-5 d-sm-none d-flex" style="margin-top: 16rem !important;" v-if="!print">
       <div class="col-12 py-4">
         <items
           class="my-my-2 h-100 border-none"
           :step="step"
           :steps="steps"
           @select-item="selectItem"
+          @print="print = true;"
         />
       </div>
       <div class="col-12 px-4 py-0">
         <selection :step="step" :steps="steps" />
       </div>
     </div>
+    <PDF :steps="steps" v-if="print" @printed="print = false" />
 
     <!-- <div v-if="shownDisclaimer">
       <transition name="modal">
@@ -128,6 +130,7 @@ import Calculator from "./components/Calculator.vue";
 import Info from "./components/Info.vue";
 import Steps from "./components/Steps.vue";
 import Items from "./components/Items.vue";
+import PDF from './components/PDF.vue';
 export default {
   name: "App",
   components: {
@@ -136,9 +139,11 @@ export default {
     Items,
     Selection,
     Calculator,
+    PDF
   },
   data() {
     return {
+      print: false,
       shownDisclaimer: true,
       step: 0,
       shifters: [2, 3, 4],
@@ -427,6 +432,16 @@ export default {
               text: "Xi-Textured Acrylic Finish Coat",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0000s_0003_Finish-coat.png",
+            },
+            {
+              text: "Hacienda Smooth Cement Finish with Admix",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0000s_0000_Hacienda-Smooth.png",
+            },
+            {
+              text: "Hacienda Sand Cement Finish with Admix",
+              image:
+                "http://facadesxi.com/walls/SystemLayers_0000s_0001_Hacienda-Sand.png",
             },
           ],
         },

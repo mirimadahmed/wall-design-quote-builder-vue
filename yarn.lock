@@ -8419,6 +8419,11 @@
   "resolved" "https://registry.npmjs.org/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz"
   "version" "2.3.4"
 
+"vue-html-to-paper@^1.3.1":
+  "integrity" "sha512-5IdAPUgStfpVHfcG6nXD0FbUB1onWpvwVD+OZ00jJpy3qaRPkaGD7fFIvYgBB9YPkr0VK065LayEvmGmkkfhaQ=="
+  "resolved" "https://registry.npmjs.org/vue-html-to-paper/-/vue-html-to-paper-1.3.1.tgz"
+  "version" "1.3.1"
+
 "vue-html2pdf@^1.8.0":
   "integrity" "sha512-8/eH6rZUcMERgvq9a1JZjn680sD/RVLf398PikscxYMKNzqrLVjEmk/CHO7mXAyxE7Z/MCnLdmjE3fAJrEs2Xg=="
   "resolved" "https://registry.npmjs.org/vue-html2pdf/-/vue-html2pdf-1.8.0.tgz"
