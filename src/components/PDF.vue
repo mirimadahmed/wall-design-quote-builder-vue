@@ -2,7 +2,7 @@
   <div class="w-100" id="printMe">
     <div class="row m-0 p-4">
       <div class="col-5 align-self-center m-0 p-0">
-        <img src="https://facadesxi.com/wp-content/uploads/2020/10/logo.png" class="w-100" />
+        <img src="https://facadesxi.com/wp-content/uploads/2020/10/logo.png" class="h-100" />
       </div>
       <div class="col-4">&nbsp;</div>
       <div class="col-3 text-left">
@@ -88,9 +88,10 @@ export default {
     },
   },
   mounted() {
+      window.scrollTo(0, 0); // this is working!
       var HTML_Width = document.getElementById("printMe").clientWidth;
       var HTML_Height = document.getElementById("printMe").clientHeight;
-      var top_left_margin = 15;
+      var top_left_margin = 2;
       var PDF_Width = HTML_Width + top_left_margin * 2;
       var PDF_Height = PDF_Width * 1.5 + top_left_margin * 2;
       var canvas_image_width = HTML_Width;
