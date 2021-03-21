@@ -24,19 +24,19 @@
           <img src="http://facadesxi.com/walls/tick-mark.png" />
         </div>
         <div class="col-12 text-left">
-          <p>
+          <p style="white-space: pre-wrap;">
             <strong>Thank you</strong> for choosing
             <strong class="item-title">FacadesXi</strong> as your premium provider of
             building materials.
           </p>
         </div>
-        <div class="col-12 text-left download-box p-3 display-5 mb-4">
+        <div style="white-space: pre-wrap;" class="col-12 text-left download-box p-3 display-5 mb-4">
           Download the documentation of your custom wall system
           <button
-            class="mt-2 py-1 px-2"
+            class="mt-2 py-1 px-2 download-button"
             @click="generateReport"
           >
-            <i class="fa fa-download mr-2" aria-hidden="true"></i> Download Documentation
+            <i class="fa fa-download mr-2 text-light" aria-hidden="true"></i> Download Documentation
           </button>
         </div>
       </div>
@@ -48,7 +48,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     step: {
@@ -62,7 +61,7 @@ export default {
   },
   methods: {
     generateReport() {
-      this.$emit('print')
+      this.$emit("print");
     },
     selectItem(item, index) {
       this.$emit("select-item", {
@@ -172,6 +171,9 @@ button {
     display: none;
     opacity: 0;
     transform: scale(0);
+  }
+  .download-button {
+    font-size: smaller;
   }
 }
 </style>
