@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="row footer p-5 m-0" style="background: black; color: white; position: absolute; bottom: 0; left:0;">
+    <div class="row footer p-5 m-0" style="background: black; color: white;">
       <div class="col text-center font-weight-bold">
         <p class="mb-3">Disclaimer</p>
         <p class="mb-3">
@@ -77,6 +77,9 @@
 </template>
 
 <script>
+import jsPDF from "jspdf";
+// eslint-disable-next-line
+import html2canvas from "html2canvas";
 export default {
   props: {
     steps: {
@@ -85,11 +88,49 @@ export default {
     },
   },
   mounted() {
-    setTimeout(() => {
-      this.$htmlToPaper("printMe", null, () => {
-        this.$emit("printed");
+      var HTML_Width = document.getElementById("printMe").clientWidth;
+      var HTML_Height = document.getElementById("printMe").clientHeight;
+      var top_left_margin = 15;
+      var PDF_Width = HTML_Width + top_left_margin * 2;
+      var PDF_Height = PDF_Width * 1.5 + top_left_margin * 2;
+      var canvas_image_width = HTML_Width;
+      var canvas_image_height = HTML_Height;
+
+      var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+      let that = this;
+      html2canvas(document.getElementById("printMe"), { allowTaint: true, useCORS: true }).then(function (
+        canvas
+      ) {
+        canvas.getContext("2d");
+
+        console.log(canvas.height + "  " + canvas.width);
+
+        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        var pdf = new jsPDF("p", "pt", [PDF_Width, PDF_Height]);
+        pdf.addImage(
+          imgData,
+          "JPG",
+          top_left_margin,
+          top_left_margin,
+          canvas_image_width,
+          canvas_image_height
+        );
+
+        for (var i = 1; i <= totalPDFPages; i++) {
+          pdf.addPage(PDF_Width, PDF_Height);
+          pdf.addImage(
+            imgData,
+            "JPG",
+            top_left_margin,
+            -(PDF_Height * i) + top_left_margin * 4,
+            canvas_image_width,
+            canvas_image_height
+          );
+        }
+
+        pdf.save("Wall-Documentation.pdf");
+        that.$emit("printed");
       });
-    }, 5000);
   },
 };
 </script>

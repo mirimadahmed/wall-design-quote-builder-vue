@@ -4485,7 +4485,7 @@
     "toposort" "^1.0.0"
     "util.promisify" "1.0.0"
 
-"html2canvas@^1.0.0-alpha.12":
+"html2canvas@^1.0.0-alpha.12", "html2canvas@^1.0.0-rc.7":
   "integrity" "sha512-yvPNZGejB2KOyKleZspjK/NruXVQuowu8NnV2HYG7gW7ytzl+umffbtUI62v2dCHQLDdsK6HIDtyJZ0W3neerA=="
   "resolved" "https://registry.npmjs.org/html2canvas/-/html2canvas-1.0.0-rc.7.tgz"
   "version" "1.0.0-rc.7"
@@ -5207,7 +5207,7 @@
   optionalDependencies:
     "graceful-fs" "^4.1.6"
 
-"jspdf@^1.4.1":
+"jspdf@^1.4.1", "jspdf@^1.5.3":
   "integrity" "sha512-J9X76xnncMw+wIqb15HeWfPMqPwYxSpPY8yWPJ7rAZN/ZDzFkjCSZObryCyUe8zbrVRNiuCnIeQteCzMn7GnWw=="
   "resolved" "https://registry.npmjs.org/jspdf/-/jspdf-1.5.3.tgz"
   "version" "1.5.3"
