@@ -30,7 +30,7 @@
             building materials.
           </p>
         </div>
-        <div style="white-space: pre-wrap;" class="col-12 text-left download-box p-3 display-5 mb-4">
+        <div style="white-space: pre-wrap;" class="col-12 text-center download-box p-3 display-5 mb-4">
           Download the documentation of your custom wall system
           <button
             class="mt-2 py-1 px-2 download-button"
@@ -100,7 +100,7 @@ export default {
           return ["item-disabled"];
         }
       }
-      if (this.step === 9 && (index === 0 || index === 1)) {
+      if (this.step === 9 && (index === 0 || index === 1 || index === 4 || index === 5 )) {
         const selection = this.steps[8].selection;
         if (selection && selection.text.includes("Primer")) {
           return ["item-disabled"];

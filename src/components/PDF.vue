@@ -1,6 +1,6 @@
 <template>
   <div class="w-100" id="printMe">
-    <div class="row m-0 p-4">
+    <div class="row m-0 p-4 mt-4">
       <div class="col-5 align-self-center m-0 p-0">
         <img src="https://facadesxi.com/wp-content/uploads/2020/10/logo.png" class="h-100" />
       </div>
@@ -63,7 +63,7 @@
           fire resistance rating and non-combustible construction testing and
           compliance.
         </p>
-        <p>
+        <p class="mb-4">
           The materials must be installed per the IBC, IRC and FacadesXi
           installation instructions and specifications. Materials listed that
           are not manufactured or distributed by FACADESXi are included for
@@ -91,6 +91,7 @@ export default {
       window.scrollTo(0, 0); // this is working!
       var HTML_Width = document.getElementById("printMe").clientWidth;
       var HTML_Height = document.getElementById("printMe").clientHeight;
+      console.log(HTML_Height);
       var top_left_margin = 2;
       var PDF_Width = HTML_Width + top_left_margin * 2;
       var PDF_Height = PDF_Width * 1.5 + top_left_margin * 2;
@@ -107,7 +108,7 @@ export default {
         console.log(canvas.height + "  " + canvas.width);
 
         var imgData = canvas.toDataURL("image/jpeg", 1.0);
-        var pdf = new jsPDF("p", "pt", [PDF_Width, PDF_Height]);
+        var pdf = new jsPDF("p", "pt", [PDF_Width, HTML_Height]);
         pdf.addImage(
           imgData,
           "JPG",

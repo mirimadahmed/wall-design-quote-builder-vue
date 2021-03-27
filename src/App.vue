@@ -413,13 +413,13 @@ export default {
           link: "",
           selection: null,
           items: [
-            {
-              text: "Hacienda Smooth Cement Finish",
+             {
+              text: "Hacienda Smooth Cement Finish with Admix",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0000s_0000_Hacienda-Smooth.png",
             },
             {
-              text: "Hacienda Sand Cement Finish",
+              text: "Hacienda Sand Cement Finish with Admix",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0000s_0001_Hacienda-Sand.png",
             },
@@ -434,12 +434,12 @@ export default {
                 "http://facadesxi.com/walls/SystemLayers_0000s_0003_Finish-coat.png",
             },
             {
-              text: "Hacienda Smooth Cement Finish with Admix",
+              text: "Hacienda Smooth Cement Finish",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0000s_0000_Hacienda-Smooth.png",
             },
             {
-              text: "Hacienda Sand Cement Finish with Admix",
+              text: "Hacienda Sand Cement Finish",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0000s_0001_Hacienda-Sand.png",
             },

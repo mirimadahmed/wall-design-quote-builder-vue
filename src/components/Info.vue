@@ -10,9 +10,9 @@
       </p>
     </div>
     <div class="col-12 row my-4 p-0 mx-0 selection text-center">
-      <div class="col-4 p-0 bg-selected py-1 select-type"><i class="fa fa-check-circle-o mr-1 bg-selected" aria-hidden="true"></i>Stucco</div>
-      <div class="col-4 p-0 bg-unselected py-1 select-type">EIFS</div>
-      <div class="col-4 p-0 bg-unselected py-1 select-type">Concrete</div>
+      <div class="col-4 p-0 bg-selected py-2 select-type"><i class="fa fa-check-circle-o mr-1 bg-selected" aria-hidden="true"></i>Stucco</div>
+      <div class="col-4 p-0 bg-unselected py-2 select-type">EIFS</div>
+      <div class="col-4 p-0 bg-unselected py-2 select-type">Concrete</div>
     </div>
   </div>
 </template>

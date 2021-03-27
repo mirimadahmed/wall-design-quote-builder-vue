@@ -33,6 +33,9 @@
         <button class="reset-button" @click="resetSelection">RESET</button>
       </div>
     </div>
+     <div v-if="this.step === 2" style="min-height: min-content !important;" class="my-2 info-box selected-info-box">
+      <div style="flex: 1" class="text-left px-3" v-html="getHelperSelection()"></div>
+    </div>
   </div>
 </template>
 
@@ -90,6 +93,30 @@ export default {
         }
       }
       return this.steps[this.step].helper;
+    },
+    getHelperSelection() {
+      if (this.step === 5) {
+        const selection3 = this.steps[2].selection;
+        const selection4 = this.steps[3].selection;
+        const selection5 = this.steps[4].selection;
+        if (selection3 && selection3.text === "Water Shield without Slip Sheet") {
+          if (selection4 && selection4.text === "No Drainage") {
+            if (selection5 && selection5.text === "No Insulation") {
+              return this.steps[this.step].helper + ". " + this.steps[this.step].error;
+            }
+          }
+        }
+      }
+      if (this.step === 6) {
+        const selection = this.steps[5].selection;
+        if (selection && selection.text === "Woven Wire") {
+          return this.steps[this.step].helper + ". " + this.steps[this.step].error;
+        }
+      }
+      if (this.step === 2) {
+        return '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>A slip sheet is required when being installed directly under Lath and Stucco.</span>'
+      }
+     // return this.steps[this.step].helper;
     },
     resetSelection() {
       this.$emit("reset-selection");
