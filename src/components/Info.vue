@@ -1,7 +1,7 @@
 <template>
   <div class="row m-0 text-left">
     <div class="col-12 p-0">
-      <h1>Let's design your ideal wall</h1>
+      <h1 class="">Let's design your ideal wall</h1>
     </div>
     <div class="col-12 p-0">
       <p>
@@ -22,6 +22,10 @@ export default {};
 </script>
 
 <style scoped>
+.int-title{
+  font-size: 2.5rem;
+  text-transform: inherit;
+}
 .select-type {
   border: 1px solid white;
 }

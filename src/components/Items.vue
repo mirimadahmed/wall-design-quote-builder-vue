@@ -6,6 +6,7 @@
         v-for="(item, index) in steps[step].items"
         :key="item.image + index"
       >
+      <div>
         <img
           :src="item.image"
           :alt="item.text"
@@ -13,6 +14,8 @@
           @click="selectItem(item, index)"
           :class="getClasses(index)"
         />
+        <i v-if='getClasses1(index) ==  "item-disabled"' class="fa fa-ban" aria-hidden="true"></i>
+       </div>
         <p
           class="item-title pointer-clicker"
           :class="getClasses(index)"
@@ -114,6 +117,51 @@ export default {
       }
       return [];
     },
+    getClasses1(index) {
+      if (this.step === 3 && index === 2) {
+        if (
+          ["Water Barrier by Others", "Water Shield with Slip Sheet"].includes(
+            this.steps[2].selection.text
+          )
+        ) {
+          return "item-disabled";
+        }
+      }
+      if (this.step === 5) {
+        const selection3 = this.steps[2].selection;
+        const selection4 = this.steps[3].selection;
+        const selection5 = this.steps[4].selection;
+        if (
+          selection3 &&
+          selection3.text === "Water Shield without Slip Sheet"
+        ) {
+          if (selection4 && selection4.text === "No Drainage") {
+            if (selection5 && selection5.text === "No Insulation") {
+              return "item-disabled";
+            }
+          }
+        }
+      }
+      if (this.step === 6 && (index === 1 || index === 3)) {
+        const selection = this.steps[5].selection;
+        if (selection && selection.text === "Woven Wire") {
+          return "item-disabled";
+        }
+      }
+      if (this.step === 9 && (index === 0 || index === 1 || index === 4 || index === 5 )) {
+        const selection = this.steps[8].selection;
+        if (selection && selection.text.includes("Primer")) {
+          return "item-disabled";
+        }
+      }
+      if (this.step === 9 && (index === 4 || index === 5)) {
+        const selection = this.steps[7].selection;
+        if (selection && !selection.text.includes("FS5")) {
+          return "item-disabled";
+        }
+      }
+      return "";
+    },
   },
 };
 </script>
@@ -150,6 +198,19 @@ button {
   color: rgb(197, 197, 197);
   filter: grayscale(1);
 }
+.tem-disabled :before {
+    content: "\f05e";
+}
+img::after {
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(120deg, #eaee44, #33d0ff);
+    opacity: .7;
+}
 @media screen and (max-width: 575px) {
   .item-wrapper {
     display: block;
@@ -176,4 +237,22 @@ button {
     font-size: smaller;
   }
 }
+.fa-ban{
+    position: absolute;
+    top: 80px;
+    z-index: 10;
+    font-size: 40px;
+    left: 40%;
+    opacity: 0.5;
+    color:gray
+  }
+  .ban:before {
+   font-family: "Font Awesome 5 Free";
+   content: "\f095";
+   display: inline-block;
+   padding-right: 3px;
+   vertical-align: middle;
+   font-weight:900;
+}
+
 </style>

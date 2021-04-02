@@ -395,7 +395,7 @@ export default {
               none: true,
             },
             {
-              text: "Xi-Alkali Resistant Primer With Mascot",
+              text: "Xi-Alkali Resistant (Primer With Mascot)",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0001s_0000_Primer.png",
             },

@@ -127,7 +127,7 @@ export default {
   max-width: 600px;
   position: fixed;
   z-index: 100;
-  top: 20%;
+  top: 46%;
   right: 20px;
   transition: all 0.5s ease-in-out;
 }

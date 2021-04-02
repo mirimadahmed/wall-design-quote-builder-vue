@@ -33,8 +33,8 @@
         <button class="reset-button" @click="resetSelection">RESET</button>
       </div>
     </div>
-     <div v-if="this.step === 2" style="min-height: min-content !important;" class="my-2 info-box selected-info-box">
-      <div style="flex: 1" class="text-left px-3" v-html="getHelperSelection()"></div>
+     <div style="min-height: min-content !important; font-size: 0.8rem;" class="my-2">
+      <div style="flex: 1 font-size: 0.8rem;" class="text-left px-3" v-html="getHelperSelection()"></div>
     </div>
   </div>
 </template>
@@ -73,7 +73,7 @@ export default {
     },
   },
   methods: {
-    getHelper() {
+    getHelper1() {
       if (this.step === 5) {
         const selection3 = this.steps[2].selection;
         const selection4 = this.steps[3].selection;
@@ -94,6 +94,9 @@ export default {
       }
       return this.steps[this.step].helper;
     },
+    getHelper() {
+      return this.steps[this.step].helper;
+    },
     getHelperSelection() {
       if (this.step === 5) {
         const selection3 = this.steps[2].selection;
@@ -102,7 +105,7 @@ export default {
         if (selection3 && selection3.text === "Water Shield without Slip Sheet") {
           if (selection4 && selection4.text === "No Drainage") {
             if (selection5 && selection5.text === "No Insulation") {
-              return this.steps[this.step].helper + ". " + this.steps[this.step].error;
+              return this.steps[this.step].error;
             }
           }
         }
@@ -110,7 +113,7 @@ export default {
       if (this.step === 6) {
         const selection = this.steps[5].selection;
         if (selection && selection.text === "Woven Wire") {
-          return this.steps[this.step].helper + ". " + this.steps[this.step].error;
+          return this.steps[this.step].error;
         }
       }
       if (this.step === 2) {
@@ -247,6 +250,7 @@ button:disabled {
   background: #01679a;
   color: white;
 }
+
 .bg-normal {
   color: #01679a;
 }

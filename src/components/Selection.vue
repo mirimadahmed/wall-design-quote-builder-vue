@@ -46,6 +46,7 @@ export default {
 .col-item {
   text-transform: uppercase;
   font-size: 0.8rem;
+  font-family: 'Lato';
 }
 .number {
   background: #01679a;

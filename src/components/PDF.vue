@@ -4,20 +4,20 @@
       <div class="col-5 align-self-center m-0 p-0">
         <img src="https://facadesxi.com/wp-content/uploads/2020/10/logo.png" class="h-100" />
       </div>
-      <div class="col-4">&nbsp;</div>
-      <div class="col-3 text-left">
-        <div class="row font-weight-bold">Address</div>
-        <div class="row">15262 Capital Port, San Antonio, TX, 78249</div>
-        <div class="row font-weight-bold">Phone</div>
-        <div class="row">1-800-611-6602</div>
-        <div class="row font-weight-bold">E-mail Address</div>
-        <div class="row">info@facadesxi.com</div>
+      <div class="col-3">&nbsp;</div>
+      <div class="col-4 text-left pl-5">
+        <div class="row font-weight-bold serif-font">Address</div>
+        <div class="row serif-font">15262 Capital Port, San Antonio, TX, 78249</div>
+        <div class="row font-weight-bold serif-font">Phone</div>
+        <div class="row serif-font">1-800-611-6602</div>
+        <div class="row font-weight-bold serif-font">E-mail Address</div>
+        <div class="row serif-font">info@facadesxi.com</div>
       </div>
     </div>
     <div class="row m-0 p-0 mt-4">
       <div class="col-12 m-0 px-0 text-center">
-        <h1 class="font-weight-bold">INTERACTIVE WALL SYSTEMS</h1>
-        <h4>STUCCO SYSTEM</h4>
+        <h1 class="font-weight-bold serif-font">INTERACTIVE WALL SYSTEMS</h1>
+        <h4 class="serif-font">STUCCO SYSTEM</h4>
       </div>
     </div>
     <div class="row m-0 my-4 p-4">
@@ -41,21 +41,21 @@
       </div>
       <div class="col-6 wrapper wrapper-2 p-0 m-0">
         <div class="row p-2 align-items-center" v-for="(step, index) in steps" :key="step.title">
-          <div class="col-3 text-left">
-            <p class="heading">Layer</p>
-            <h5 class="font-weight-bold">{{ index + 1}}.</h5>
+          <div class="col-2 text-center">
+            <p class="heading serif-font">Layer</p>
+            <h5 class="font-weight-bold serif-font">{{ index + 1}}.</h5>
           </div>
           <div class="col text-left">
-            <p class="heading">{{ step.title }}</p>
-            <h5 class="font-weight-bold" v-if="step.selection">{{ step.selection.text}}</h5>
+            <p class="heading serif-font">{{ step.title }}</p>
+            <h5 class="font-weight-bold serif-font" v-if="step.selection">{{ step.selection.text}}</h5>
           </div>
         </div>
       </div>
     </div>
     <div class="row footer p-5 m-0" style="background: black; color: white;">
       <div class="col text-center font-weight-bold">
-        <p class="mb-3">Disclaimer</p>
-        <p class="mb-3">
+        <p class="mb-3 serif-font">Disclaimer</p>
+        <p class="mb-3 serif-font">
           This interactive System is a guide to help designers and owners
           choose the components and assembly for their project. The designer
           should ensure that the chosen components and assembly meet the
@@ -63,7 +63,7 @@
           fire resistance rating and non-combustible construction testing and
           compliance.
         </p>
-        <p class="mb-4">
+        <p class="mb-4 serif-font">
           The materials must be installed per the IBC, IRC and FacadesXi
           installation instructions and specifications. Materials listed that
           are not manufactured or distributed by FACADESXi are included for
@@ -98,7 +98,7 @@ export default {
       var canvas_image_width = HTML_Width;
       var canvas_image_height = HTML_Height;
 
-      var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+      var totalPDFPages = Math.ceil(PDF_Width / PDF_Height) - 1;
       let that = this;
       html2canvas(document.getElementById("printMe"), { allowTaint: true, useCORS: true }).then(function (
         canvas
@@ -138,6 +138,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('http://fonts.cdnfonts.com/css/myriad-pro');
 .wrapper {
   border: 1px solid black;
 }
@@ -158,6 +159,8 @@ export default {
 .footer {
   background: black;
   color: white;
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
 }
 p {
   margin-bottom: 0;
@@ -178,5 +181,9 @@ p {
   bottom: 0;
   right: 0;
   width: 100%;
+}
+.serif-font{
+  /* font-family: 'Myriad Pro', sans-serif !important; */
+   font-family: 'Helvetica Neue' !important;
 }
 </style>
