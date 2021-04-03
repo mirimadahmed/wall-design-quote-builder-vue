@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="text-center container">
-    <Calculator class="d-none d-sm-flex" v-if="!print" />
-    <div class="row d-none d-sm-flex" v-if="!print">
+    <Calculator class="d-none d-sm-flex" />
+    <div class="row d-none d-sm-flex" >
       <div class="col-5 px-5 py-0">
         <transition-group name="list" tag="div">
           <div v-for="item in selectedItems" class="design-element" :key="item.text">
@@ -20,7 +20,7 @@
         />
       </div>
     </div>
-    <div class="row mt-5 d-none d-sm-flex" v-if="!print">
+    <div class="row d-none d-sm-flex">
       <div class="col-5 px-5 py-0">
         <selection :step="step" :steps="steps" />
       </div>
@@ -31,7 +31,7 @@
     <!-- 
       Mobile only
     -->
-    <div class="row d-sm-none d-flex" v-if="!print">
+    <div class="row d-sm-none d-flex" >
       <div class="col-12 p-0">
         <info class="mt-2 px-3" />
         <steps
@@ -55,7 +55,7 @@
         </transition-group>
       </div>
     </div>
-    <div class="row mt-5 d-sm-none d-flex" style="margin-top: 16rem !important;" v-if="!print">
+    <div class="row mt-5 d-sm-none d-flex" style="margin-top: 16rem !important;">
       <div class="col-12 py-4">
         <items
           class="my-my-2 h-100 border-none"
@@ -150,7 +150,7 @@ export default {
       steps: [
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>What type of Studs are you using? <span>Steel or Wood</span>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>What type of Studs are you using? <span>Steel or Wood</span></div>',
           title: "Wall Base",
           link: "",
           selection: null,
@@ -184,7 +184,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Substrate Selection. <span>If Unknown, Select ASTM C1177 FiberGlass Faced Gypsum Sheathing</span>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Substrate Selection. <span>If Unknown, Select ASTM C1177 FiberGlass Faced Gypsum Sheathing</span></div>',
           title: "Substrate",
           link: "",
           selection: null,
@@ -213,7 +213,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FacadesXi WaterShield allows for single source materials and Longer and better system warranties.<br><i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>A slip sheet is required when being installed directly under Lath and Stucco.</span>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FacadesXi WaterShield allows for single source materials and Longer and better system warranties.</div>',
           title: "Water Resistive Barrier",
           link: "",
           selection: null,
@@ -237,7 +237,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Do you want an extra means of drainage behind your stucco assembly?',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Do you want an extra means of drainage behind your stucco assembly?</div>',
           title: "Drainage",
           link: "",
           selection: null,
@@ -272,7 +272,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Continuous Insulation Boards allow for Needed R Value',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Continuous Insulation Boards allow for Needed R Value</div>',
           title: "Continuous Insulation",
           link: "",
           selection: null,
@@ -302,7 +302,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Lath Type, <span>If Unknown, Select Standard Metal Lath</span>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Choose Lath Type, <span>If Unknown, Select Standard Metal Lath</span></div>',
           title: "Code Compilant Lath",
           link: "",
           selection: null,
@@ -328,7 +328,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Stucco, One coat or Three coats? Xi-Admix will increase the strength of the your stucco base coat and decrease efflorescence.',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Stucco, One coat or Three coats? Xi-Admix will increase the strength of the your stucco base coat and decrease efflorescence.</div>',
           title: "Stucco",
           link: "",
           error: "Woven Wire is only allowed with One Coat Stucco.",
@@ -358,7 +358,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>Do you want a crack Resistant Layer: </span>FractureStop Layer: FS 10 has a more polymer modified base coat and higher weight reinforcing mesh and comes with a longer warranty than FS5 options.',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>Do you want a crack Resistant Layer: </span>FractureStop Layer: FS 10 has a more polymer modified base coat and higher weight reinforcing mesh and comes with a longer warranty than FS5 options.</div>',
           title: "Fracturestop",
           link: "",
           selection: null,
@@ -383,7 +383,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Select a Primer for decreased efflorescence and highest finish coat aesthetic performance and increased warranty - <span>Do not select Primer if using a cement finish</span>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Select a Primer for decreased efflorescence and highest finish coat aesthetic performance and increased warranty - <span>Do not select Primer if using a cement finish</span></div>',
           title: "Primer",
           link: "",
           selection: null,
@@ -408,7 +408,7 @@ export default {
         },
         {
           helper:
-            '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i>Choose Finish coat for your system?',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Choose Finish coat for your system?</div>',
           title: "Finish Coat",
           link: "",
           selection: null,

@@ -38,6 +38,7 @@ export default {
   font-style: italic;
   border-bottom: 2px solid #01679a;
   font-size: 1.5rem;
+  line-height: 1.5;
 }
 .row-item {
   border-bottom: 1px solid #01679a;

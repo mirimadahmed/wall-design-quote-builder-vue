@@ -14,7 +14,7 @@
           @click="selectItem(item, index)"
           :class="getClasses(index)"
         />
-        <i v-if='getClasses1(index) ==  "item-disabled"' class="fa fa-ban" aria-hidden="true"></i>
+        <i v-if='getClasses1(index) ==  "item-disabled"' :class="step === 3 ? 'fa fa-ban ban1' : 'fa fa-ban'" aria-hidden="true"></i>
        </div>
         <p
           class="item-title pointer-clicker"
@@ -22,7 +22,7 @@
           @click="selectItem(item, index)"
         >{{ item.text }}</p>
       </div>
-      <div class="col-12 m-0 p-4" v-if="step === 9 && this.steps[step].selection">
+      <div class="col-12 m-0 p-4" v-if="((step === 9 && this.steps[step].selection))">
         <div class="col-12 text-center pb-4">
           <img src="http://facadesxi.com/walls/tick-mark.png" />
         </div>
@@ -60,7 +60,7 @@ export default {
     steps: {
       type: Array,
       required: true,
-    },
+    }
   },
   methods: {
     generateReport() {
@@ -118,6 +118,9 @@ export default {
       return [];
     },
     getClasses1(index) {
+
+        console.log('index', index);
+      
       if (this.step === 3 && index === 2) {
         if (
           ["Water Barrier by Others", "Water Shield with Slip Sheet"].includes(
@@ -154,11 +157,22 @@ export default {
           return "item-disabled";
         }
       }
-      if (this.step === 9 && (index === 4 || index === 5)) {
-        const selection = this.steps[7].selection;
-        if (selection && !selection.text.includes("FS5")) {
+      
+      if (this.step === 9 && ( index === 4 || index === 5 )) {
+        const selection8 = this.steps[7].selection;
+        const selection9 = this.steps[8].selection;
+
+        if (selection8.text == 'FS5' && selection9.text === 'None') {
           return "item-disabled";
         }
+      }
+      
+      if (this.step === 9  ) {
+         const selection8 = this.steps[7].selection;
+         const selection9 = this.steps[8].selection;
+         if (selection8.text === "None" && selection9.text == "None" ) {
+           return ""; 
+         }
       }
       return "";
     },
@@ -246,6 +260,18 @@ img::after {
     opacity: 0.5;
     color:gray
   }
+  .ban1{
+    top:60px !important;
+  }
+  /* .fa-ban{
+    position: absolute;
+    top: 60px;
+    z-index: 10;
+    font-size: 40px;
+    left: 40%;
+    opacity: 0.5;
+    color:gray
+  } */
   .ban:before {
    font-family: "Font Awesome 5 Free";
    content: "\f095";

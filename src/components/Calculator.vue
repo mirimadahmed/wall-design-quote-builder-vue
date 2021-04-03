@@ -127,7 +127,7 @@ export default {
   max-width: 600px;
   position: fixed;
   z-index: 100;
-  top: 46%;
+  top: 40%;
   right: 20px;
   transition: all 0.5s ease-in-out;
 }
@@ -135,7 +135,7 @@ export default {
 .slide-opener {
   position: fixed;
   z-index: 100;
-  top: 20%;
+  top: 40%;
   right: 0;
   transition: all 0.5s ease-in-out;
 }

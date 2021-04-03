@@ -33,7 +33,7 @@
         <button class="reset-button" @click="resetSelection">RESET</button>
       </div>
     </div>
-     <div style="min-height: min-content !important; font-size: 0.8rem;" class="my-2">
+     <div style="font-size: 0.8rem; height:3rem" class="my-2">
       <div style="flex: 1 font-size: 0.8rem;" class="text-left px-3" v-html="getHelperSelection()"></div>
     </div>
   </div>
@@ -98,28 +98,69 @@ export default {
       return this.steps[this.step].helper;
     },
     getHelperSelection() {
-      if (this.step === 5) {
-        const selection3 = this.steps[2].selection;
-        const selection4 = this.steps[3].selection;
-        const selection5 = this.steps[4].selection;
-        if (selection3 && selection3.text === "Water Shield without Slip Sheet") {
-          if (selection4 && selection4.text === "No Drainage") {
-            if (selection5 && selection5.text === "No Insulation") {
-              return this.steps[this.step].error;
-            }
+
+
+         var current = '';
+
+           if (this.step === 9) {
+              const selection8 = this.steps[7].selection;
+              const selection9 = this.steps[8].selection;
+
+              if ((selection8.text == 'FS5') && selection9.text === 'None') {
+                return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>If you want to use either Hacienda finish then FS5 Fracture Stop is required.</span></div>';
+              }
+            }   
+
+           if (this.step === 9) {
+              const selection8 = this.steps[7].selection;
+              const selection9 = this.steps[8].selection;
+
+              if ((selection8.text == 'FS5' || selection8.text == 'FS10' ) && selection9.text.includes("Primer")) {
+                return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>If you want to use either Hacienda finish then FS5 Fracture Stop is required.<br>Hacienda finish not applicable with Primer. </span></div>';
+              }
+            }   
+
+        if (this.steps[this.step].selection) {
+           current = this.steps[this.step].selection.text;
+        }else{
+            return '';
+        }
+
+      if (this.step == 0 && ( current == 'Brick' || current ==  'Concrete' || current ==  'CMU' ) ) {
+                 return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>For Direct Application to CMU, Brick or Concrete, skip to Step 7. <br> For Direct Application to CMU, Brick or Concrete, contact FacadesXi Technical Services for project documentation.</span></div>';
           }
-        }
-      }
-      if (this.step === 6) {
-        const selection = this.steps[5].selection;
-        if (selection && selection.text === "Woven Wire") {
-          return this.steps[this.step].error;
-        }
-      }
-      if (this.step === 2) {
-        return '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>A slip sheet is required when being installed directly under Lath and Stucco.</span>'
-      }
+
+      if (this.step == 3 && ( current == 'Insulation Board with Drainage Grooves') ) {
+                 return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>For Insulation board skip to step 6.</span></div>';
+          }
+          
+     
+
+      // if (this.step === 5) {
+      //   const selection3 = this.steps[2].selection;
+      //   const selection4 = this.steps[3].selection;
+      //   const selection5 = this.steps[4].selection;
+      //   if (selection3 && selection3.text === "Water Shield without Slip Sheet") {
+      //     if (selection4 && selection4.text === "No Drainage") {
+      //       if (selection5 && selection5.text === "No Insulation") {
+      //         return this.steps[this.step].error;
+      //       }
+      //     }
+      //   }
+      // }
+
+      // if (this.step === 6) {
+      //   const selection = this.steps[5].selection;
+      //   if (selection && selection.text === "Woven Wire") {
+      //     return this.steps[this.step].error;
+      //   }
+      // }
+      // if (this.step === 2) {
+      //   return '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>A slip sheet is required when being installed directly under Lath and Stucco.</span>'
+      // }
      // return this.steps[this.step].helper;
+
+     return null;
     },
     resetSelection() {
       this.$emit("reset-selection");
