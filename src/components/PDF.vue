@@ -48,6 +48,7 @@
           <div class="col text-left">
             <p class="heading serif-font">{{ step.title }}</p>
             <h5 class="font-weight-bold serif-font" v-if="step.selection">{{ step.selection.text}}</h5>
+            <h5 class="font-weight-bold serif-font" v-else>None</h5>
           </div>
         </div>
       </div>

@@ -127,7 +127,7 @@ export default {
         }
 
       if (this.step == 0 && ( current == 'Brick' || current ==  'Concrete' || current ==  'CMU' ) ) {
-                 return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>For Direct Application to CMU, Brick or Concrete, skip to Step 7. <br> For Direct Application to CMU, Brick or Concrete, contact FacadesXi Technical Services for project documentation.</span></div>';
+                 return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>For Direct Application to CMU, Brick or Concrete, Skip to Step 7. <br> For Direct Application to CMU, Brick or Concrete, Contact FACADESXi Technical Services for project documentation.</span></div>';
           }
 
       if (this.step == 3 && ( current == 'Insulation Board with Drainage Grooves') ) {

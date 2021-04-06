@@ -106,7 +106,7 @@
                       compliance.
                     </p>
                     <p>
-                      The materials must be installed per the IBC, IRC and FacadesXi
+                      The materials must be installed per the IBC, IRC and FACADESXi
                       installation instructions and specifications. Materials listed that
                       are not manufactured or distributed by FACADESXi are included for
                       the clarity of the assembly, are not necessarily installed by the
@@ -213,7 +213,7 @@ export default {
         },
         {
           helper:
-            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FacadesXi WaterShield allows for single source materials and Longer and better system warranties.</div>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FACADESXi WaterShield allows for single source materials and longer and better system warranties.</div>',
           title: "Water Resistive Barrier",
           link: "",
           selection: null,
@@ -249,7 +249,7 @@ export default {
               none: true,
             },
             {
-              text: "Insulation Board with Drainage Grooves",
+              text: "Insulation Board",
               image:
                 "http://facadesxi.com/walls/SystemLayers_0006s_0000_Drainage-Grooves.png",
             },
@@ -328,7 +328,7 @@ export default {
         },
         {
           helper:
-            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Stucco, One coat or Three coats? Xi-Admix will increase the strength of the your stucco base coat and decrease efflorescence.</div>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i><br><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>Stucco, One coat or Three coat <br>  Xi-Admix will increase the strength of the your stucco base coat and decrease efflorescence.</div>',
           title: "Stucco",
           link: "",
           error: "Woven Wire is only allowed with One Coat Stucco.",
