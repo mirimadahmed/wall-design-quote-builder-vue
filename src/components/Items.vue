@@ -1,6 +1,10 @@
 <template>
-  
-  <div class="main-selection-wrapper h-100 row">
+  <div>
+     <div style="font-size: 0.8rem; height:3rem" class="row align-items-end my-2">
+      <div style="flex: 1 font-size: 0.8rem;" class="text-left px-3 info-note" v-html="getHelperSelection()"></div>
+      <div style="margin-top:5px; color:white">-</div>
+    </div>
+  <div :class="step == 9 ? 'main-selection-wrapper row' : 'main-selection-wrapper h-100 row'">
     <div class="row col-12 m-0 item-wrapper" :class="step > 4 ? 'p-0' : 'pt-2'">
       <div
         class="col-3 item-selector"
@@ -15,7 +19,7 @@
           @click="selectItem(item, index)"
           :class="getClasses(index)"
         />
-        <i v-if='getClasses1(index) ==  "item-disabled"' :class="step === 3 ? 'fa fa-ban ban1' : 'fa fa-ban'" aria-hidden="true"></i>
+        <i v-if='getClasses1(index) ==  "item-disabled"' :class="(step === 3 || step === 5 ) ? 'fa fa-ban ban1' : 'fa fa-ban'" aria-hidden="true"></i>
        </div>
         <p
           class="item-title pointer-clicker"
@@ -27,10 +31,10 @@
         <div class="col-12 text-center pb-4">
           <img src="http://facadesxi.com/walls/tick-mark.png" />
         </div>
-        <div class="col-12 text-left">
+        <div class="col-12 text-center">
           <p style="white-space: pre-wrap;">
             <strong>Thank you</strong> for choosing
-            <strong class="item-title">FacadesXi</strong> as your premium provider of
+            <strong class="item-title">FACADESXi</strong> as your premium provider of
             building materials.
           </p>
         </div>
@@ -49,7 +53,7 @@
       <img src="http://facadesxi.com/walls/right-botom-cloud.png" alt class="w-100 img-cloud" />
     </div>
   </div>
-  
+  </div>
 </template>
 
 <script>
@@ -98,13 +102,16 @@ export default {
             }
           }
         }
+
       }
+
       if (this.step === 6 && (index === 1 || index === 3)) {
         const selection = this.steps[5].selection;
         if (selection && selection.text === "Woven Wire") {
           return ["item-disabled"];
         }
       }
+
       if (this.step === 9 && (index === 0 || index === 1 || index === 4 || index === 5 )) {
         const selection = this.steps[8].selection;
         if (selection && selection.text.includes("Primer")) {
@@ -117,6 +124,16 @@ export default {
           return ["item-disabled"];
         }
       }
+
+        if (this.step === 9 && (index ===0 || index===1 || index === 4 || index === 5 )) {
+        const selection8 = this.steps[7].selection;
+        const selection9 = this.steps[8].selection;
+
+        if (selection8.text == 'FS10' && selection9.text === 'None') {
+           return ["item-disabled"];
+        }
+      }
+
       return [];
     },
     getClasses1(index) {
@@ -146,6 +163,7 @@ export default {
             }
           }
         }
+        
       }
       if (this.step === 6 && (index === 1 || index === 3)) {
         const selection = this.steps[5].selection;
@@ -168,6 +186,15 @@ export default {
           return "item-disabled";
         }
       }
+
+      if (this.step === 9 && (index ===0 || index===1 || index === 4 || index === 5 )) {
+        const selection8 = this.steps[7].selection;
+        const selection9 = this.steps[8].selection;
+
+        if (selection8.text == 'FS10' && selection9.text === 'None') {
+          return "item-disabled";
+        }
+      }
       
       if (this.step === 9  ) {
          const selection8 = this.steps[7].selection;
@@ -178,16 +205,41 @@ export default {
       }
       return "";
     },
-      getHelperSelection() {
-
+    getHelperSelection() {
 
          var current = '';
 
-           if (this.step === 9) {
+        if (this.step === 5) {
+        const selection3 = this.steps[2].selection;
+        const selection4 = this.steps[3].selection;
+        const selection5 = this.steps[4].selection;
+        if (
+          selection3 &&
+          selection3.text === "Water Shield without Slip Sheet"
+        ) {
+          if (selection4 && selection4.text === "No Drainage") {
+            if (selection5 && selection5.text === "No Insulation") {
+               return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div>You must choose Watershield with a Slip Sheet.</div>';
+            }
+          }
+        }
+
+      }
+
+          //  if (this.step === 9) {
+          //     const selection8 = this.steps[7].selection;
+          //     const selection9 = this.steps[8].selection;
+
+          //     if ((selection8.text == 'FS5') && selection9.text === 'None') {
+          //       return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>If you want to use either Hacienda finish then FS5 Fracture Stop is required.</span></div>';
+          //     }
+          //   }   
+          
+          if (this.step === 9) {
               const selection8 = this.steps[7].selection;
               const selection9 = this.steps[8].selection;
 
-              if ((selection8.text == 'FS5') && selection9.text === 'None') {
+              if ((selection8.text == 'FS10') && selection9.text === 'None') {
                 return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>If you want to use either Hacienda finish then FS5 Fracture Stop is required.</span></div>';
               }
             }   
@@ -197,7 +249,7 @@ export default {
               const selection9 = this.steps[8].selection;
 
               if ((selection8.text == 'FS5' || selection8.text == 'FS10' ) && selection9.text.includes("Primer")) {
-                return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>If you want to use either Hacienda finish then FS5 Fracture Stop is required.<br>Hacienda finish not applicable with Primer. </span></div>';
+                return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i><br><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>If you want to use either Hacienda finish then FS5 Fracture Stop is required.<br>Hacienda finish not applicable with Primer. </span></div>';
               }
             }   
 
@@ -208,38 +260,12 @@ export default {
         }
 
       if (this.step == 0 && ( current == 'Brick' || current ==  'Concrete' || current ==  'CMU' ) ) {
-                 return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>For Direct Application to CMU, Brick or Concrete, skip to Step 7. <br> For Direct Application to CMU, Brick or Concrete, contact FacadesXi Technical Services for project documentation.</span></div>';
+                 return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i><br><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>For Direct Application to CMU, Brick or Concrete, Skip to Step 7. <br> For Direct Application to CMU, Brick or Concrete, Contact FACADESXi Technical Services for project documentation.</span></div>';
           }
 
       if (this.step == 3 && ( current == 'Insulation Board with Drainage Grooves') ) {
                  return '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>For Insulation board skip to step 6.</span></div>';
           }
-          
-     
-
-      // if (this.step === 5) {
-      //   const selection3 = this.steps[2].selection;
-      //   const selection4 = this.steps[3].selection;
-      //   const selection5 = this.steps[4].selection;
-      //   if (selection3 && selection3.text === "Water Shield without Slip Sheet") {
-      //     if (selection4 && selection4.text === "No Drainage") {
-      //       if (selection5 && selection5.text === "No Insulation") {
-      //         return this.steps[this.step].error;
-      //       }
-      //     }
-      //   }
-      // }
-
-      // if (this.step === 6) {
-      //   const selection = this.steps[5].selection;
-      //   if (selection && selection.text === "Woven Wire") {
-      //     return this.steps[this.step].error;
-      //   }
-      // }
-      // if (this.step === 2) {
-      //   return '<i class="fa fa-info-circle mr-1" aria-hidden="true"></i><span>A slip sheet is required when being installed directly under Lath and Stucco.</span>'
-      // }
-     // return this.steps[this.step].helper;
 
      return null;
     },
@@ -293,6 +319,10 @@ img::after {
     opacity: .7;
 }
 @media screen and (max-width: 575px) {
+  
+   .info-note {
+    font-size: 7px;
+  }
   .item-wrapper {
     display: block;
     overflow-x: auto;
@@ -328,7 +358,7 @@ img::after {
     color:gray
   }
   .ban1{
-    top:60px !important;
+    top:62px !important;
   }
   /* .fa-ban{
     position: absolute;

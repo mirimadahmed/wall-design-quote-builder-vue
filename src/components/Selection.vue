@@ -39,6 +39,7 @@ export default {
   border-bottom: 2px solid #01679a;
   font-size: 1.5rem;
   line-height: 1.5;
+  margin-top: 58px;
 }
 .row-item {
   border-bottom: 1px solid #01679a;

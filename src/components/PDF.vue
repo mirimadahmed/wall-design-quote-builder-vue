@@ -25,7 +25,7 @@
         <div class="col w-100 h-100">
           <div v-for="step in steps" :key="step.title">
             <img
-              v-if="step.selection"
+              v-if="(step.selection && (!step.selection.none))"
               :src="step.selection.image"
               class="selection-image"
               style="margin: auto;
@@ -65,7 +65,7 @@
           compliance.
         </p>
         <p class="mb-4 serif-font">
-          The materials must be installed per the IBC, IRC and FacadesXi
+          The materials must be installed per the IBC, IRC and FACADESXi
           installation instructions and specifications. Materials listed that
           are not manufactured or distributed by FACADESXi are included for
           the clarity of the assembly, are not necessarily installed by the

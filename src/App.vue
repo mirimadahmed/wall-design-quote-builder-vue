@@ -213,7 +213,7 @@ export default {
         },
         {
           helper:
-            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span> FACADESXi WaterShield allows for single source materials and longer and better system warranties.</div>',
+            '<div class="d-flex justify-content-start"><div class="mr-1"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i><br><i class="fa fa-info-circle mr-1" aria-hidden="true"></i><br><i class="fa fa-info-circle mr-1" aria-hidden="true"></i></div><div><span>Water Resistant Barrier, Liquid or Sheet Membranes.</span><br> FACADESXi WaterShield allows single source materials & longer, better system warranties.<br>A slip sheet is required when being installed directly under Lath and Stucco.</div>',
           title: "Water Resistive Barrier",
           link: "",
           selection: null,

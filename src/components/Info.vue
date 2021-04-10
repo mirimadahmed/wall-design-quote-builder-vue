@@ -1,7 +1,7 @@
 <template>
   <div class="row m-0 text-left">
     <div class="col-12 p-0">
-      <h1 class="">Let's design your ideal wall</h1>
+      <h1 class="int-title">Let's design your ideal wall</h1>
     </div>
     <div class="col-12 p-0">
       <p>
@@ -23,8 +23,8 @@ export default {};
 
 <style scoped>
 .int-title{
-  font-size: 2.5rem;
-  text-transform: inherit;
+    font-size: 2.5rem;
+    text-transform: capitalize;
 }
 .select-type {
   border: 1px solid white;
@@ -41,6 +41,9 @@ export default {};
   color: grey;
 }
 @media screen and (max-width: 575px) {
+  .int-title{
+    font-size: 1.4rem;
+  }
   h1 {
     font-size: 1.4rem;
     text-align: center;
@@ -54,3 +57,4 @@ export default {};
   }
 }
 </style>
+

@@ -33,9 +33,9 @@
         <button class="reset-button" @click="resetSelection">RESET</button>
       </div>
     </div>
-     <div style="font-size: 0.8rem; height:3rem" class="my-2">
+     <!-- <div style="font-size: 0.8rem; height:3rem" class="my-2">
       <div style="flex: 1 font-size: 0.8rem;" class="text-left px-3" v-html="getHelperSelection()"></div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -98,7 +98,6 @@ export default {
       return this.steps[this.step].helper;
     },
     getHelperSelection() {
-
 
          var current = '';
 
