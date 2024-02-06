@@ -1,4 +1,8 @@
-# quote-builder
+# Wall Quote Builder
+
+A comprehensive quotation builder for wall design services, made using vue js. 
+
+Step by step selection of wall layers and see the progress on the go on the builder on right side and at the end, show a quote to the buyer.
 
 ## Project setup
 ```
